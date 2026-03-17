@@ -37,7 +37,7 @@ public class Listener {
       client
           .newDeployResourceCommand()
           .addResourceFromClasspath("Quick_Start_Task_Listeners.bpmn")
-          .send();
+          .execute();
       System.out.println("Process deployed successfully.");
     }
     if (SHOULD_CREATE_PROCESS_INSTANCE_ON_STARTUP) {
@@ -46,7 +46,7 @@ public class Listener {
           .bpmnProcessId("task-listener-tutorial")
           .latestVersion()
           .variable("assignee", "john")
-          .send();
+          .execute();
       System.out.println("Process instance created successfully.");
     }
   }
@@ -60,7 +60,7 @@ public class Listener {
           .retries(0)
           .errorMessage(
               "No assignee or manager variable provided. Please set either 'assignee' or 'manager' variable.")
-          .send();
+          .execute();
       System.out.println(
           "Job failed: No assignee or manager variable provided. Incident will be raised.");
       return;
@@ -70,7 +70,7 @@ public class Listener {
     client
         .newCompleteCommand(job)
         .withResult(r -> r.forUserTask().correctAssignee(assignee))
-        .send();
+        .execute();
     System.out.println("Job completed successfully. Task assigned to: " + assignee);
   }
 }
