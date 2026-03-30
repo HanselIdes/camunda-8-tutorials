@@ -8,7 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  * Since this is a standalone test harness (no main Camunda Spring Boot application),
  * @TestDeployment explicitly tells CPT which resources to deploy on test startup.
- * This covers the main process BPMN (from ../) and all wrapper BPMNs for connector tests.
  */
 @SpringBootApplication
 public class TestApplication {

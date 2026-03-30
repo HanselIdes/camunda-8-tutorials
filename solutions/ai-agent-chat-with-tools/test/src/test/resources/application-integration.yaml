@@ -13,9 +13,11 @@ camunda:
     connectors-enabled: true
     # Connector secrets: map env vars to BPMN {{secrets.*}} references
     # These must match the secret names used in the BPMN: {{secrets.AWS_BEDROCK_ACCESS_KEY}}
+    # Note: use relaxed binding form (aws.bedrock.access.key) instead of ${AWS_BEDROCK_ACCESS_KEY}
+    # to avoid Spring Boot 4's circular placeholder detection when YAML key name == placeholder name.
     connectors-secrets:
-      AWS_BEDROCK_ACCESS_KEY: ${AWS_BEDROCK_ACCESS_KEY}
-      AWS_BEDROCK_SECRET_KEY: ${AWS_BEDROCK_SECRET_KEY}
+      AWS_BEDROCK_ACCESS_KEY: ${aws.bedrock.access.key}
+      AWS_BEDROCK_SECRET_KEY: ${aws.bedrock.secret.key}
 
 logging:
   level:
