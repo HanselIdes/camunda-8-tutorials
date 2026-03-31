@@ -1,0 +1,28 @@
+{
+  "$schema": "https://camunda.com/json-schema/cpt-test-cases/8.9/schema.json",
+  "testCases": [
+    {
+      "name": "happy path - API call completes and process ends",
+      "description": "Starts the process, mocks the HTTP connector response with a sample cat fact, and asserts the process completes.",
+      "instructions": [
+        {
+          "type": "CREATE_PROCESS_INSTANCE",
+          "processDefinitionSelector": { "processDefinitionId": "template-api-orchestration-1ikt3hz-0ybh8py" },
+          "variables": {}
+        },
+        {
+          "type": "COMPLETE_JOB",
+          "jobSelector": { "elementId": "make-request" },
+          "variables": {
+            "body": { "fact": "Cats sleep 70% of their lives.", "length": 34 }
+          }
+        },
+        {
+          "type": "ASSERT_PROCESS_INSTANCE",
+          "processInstanceSelector": { "processDefinitionId": "template-api-orchestration-1ikt3hz-0ybh8py" },
+          "state": "IS_COMPLETED"
+        }
+      ]
+    }
+  ]
+}

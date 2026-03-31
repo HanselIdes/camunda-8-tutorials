@@ -1,0 +1,33 @@
+{
+  "$schema": "https://camunda.com/json-schema/cpt-test-cases/8.9/schema.json",
+  "testCases": [
+    {
+      "name": "happy path - creating listener assigns task, user task completed, process ends",
+      "description": "The user task has a 'creating' task listener that fires before the task is visible. In CPT, this creates a listener job that must be completed first (COMPLETE_JOB_USER_TASK_LISTENER). The corrections.assignee field simulates the listener assigning the task to a user. Once the listener job completes, the user task is active and can be completed with COMPLETE_USER_TASK.",
+      "instructions": [
+        {
+          "type": "CREATE_PROCESS_INSTANCE",
+          "processDefinitionSelector": { "processDefinitionId": "task-listener-tutorial" },
+          "variables": {}
+        },
+        {
+          "type": "COMPLETE_JOB_USER_TASK_LISTENER",
+          "jobSelector": { "elementId": "Auto_assigned_by_task_listener_on_creating_event" },
+          "corrections": {
+            "assignee": "testuser"
+          }
+        },
+        {
+          "type": "COMPLETE_USER_TASK",
+          "userTaskSelector": { "elementId": "Auto_assigned_by_task_listener_on_creating_event" },
+          "variables": {}
+        },
+        {
+          "type": "ASSERT_PROCESS_INSTANCE",
+          "processInstanceSelector": { "processDefinitionId": "task-listener-tutorial" },
+          "state": "IS_COMPLETED"
+        }
+      ]
+    }
+  ]
+}
