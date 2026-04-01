@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Web Modeler" exporterVersion="2e63a9a" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.5.0" camunda:diagramRelationId="3f4f46f7-e146-4fbe-91d6-cf2dac33a2a1">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.45.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.5.0" camunda:diagramRelationId="3f4f46f7-e146-4fbe-91d6-cf2dac33a2a1">
   <bpmn:process id="Process_l1jbzht" name="Intelligent-routing-with-openai" isExecutable="true">
     <bpmn:extensionElements>
       <zeebe:userTaskForm id="UserTaskForm_1jtqu5f">{
@@ -499,13 +499,13 @@
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_0vcinh5" sourceRef="azure_openai_call" targetRef="Gateway_1m3zdr2" />
     <bpmn:sequenceFlow id="flow_sales_inquiry" name="sales" sourceRef="gateway_routing" targetRef="activity_sales_team">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=matches(route, "SALES", "i")</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=route = "SALES"</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="flow_technical_inquiry" name="technical" sourceRef="gateway_routing" targetRef="activity_engineering_team">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=matches(route, "ENGINEERING", "i")</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=route = "ENGINEERING"</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_1gj1kgq" name="legal" sourceRef="gateway_routing" targetRef="Activity_04j3j7a">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=matches(route, "LEGAL", "i")</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=route = "LEGAL"</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_07h5nkp" sourceRef="activity_sales_team" targetRef="gateway_sales_team" />
     <bpmn:sequenceFlow id="Flow_088ove7" sourceRef="activity_engineering_team" targetRef="gateway_sales_team" />
