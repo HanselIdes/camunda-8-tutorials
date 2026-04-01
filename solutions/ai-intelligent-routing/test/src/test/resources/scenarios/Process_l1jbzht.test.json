@@ -1,0 +1,131 @@
+{
+  "$schema": "https://camunda.com/json-schema/cpt-test-cases/8.9/schema.json",
+  "testCases": [
+    {
+      "name": "happy path - sales routing resolved",
+      "description": "Customer enters an inquiry, AI routes to sales team, sales agent marks it resolved. Process ends at happy-end.",
+      "instructions": [
+        {
+          "type": "CREATE_PROCESS_INSTANCE",
+          "processDefinitionSelector": {
+            "processDefinitionId": "Process_l1jbzht"
+          },
+          "variables": {}
+        },
+        {
+          "type": "COMPLETE_JOB",
+          "jobSelector": {
+            "elementId": "Activity_03z512o"
+          },
+          "variables": { "inquiry": "I'd like to buy your product." }
+        },
+        {
+          "type": "COMPLETE_JOB",
+          "jobSelector": {
+            "elementId": "azure_openai_call"
+          },
+          "variables": { "route": "SALES" }
+        },
+        {
+          "type": "ASSERT_ELEMENT_INSTANCES",
+          "processInstanceSelector": {
+            "processDefinitionId": "Process_l1jbzht"
+          },
+          "elementSelectors": [
+            { "elementId": "activity_sales_team" }
+          ],
+          "state": "IS_ACTIVE"
+        },
+        {
+          "type": "COMPLETE_JOB",
+          "jobSelector": {
+            "elementId": "activity_sales_team"
+          },
+          "variables": { "route": "resolved" }
+        },
+        {
+          "type": "ASSERT_PROCESS_INSTANCE",
+          "processInstanceSelector": {
+            "processDefinitionId": "Process_l1jbzht"
+          },
+          "state": "IS_COMPLETED"
+        }
+      ]
+    },
+    {
+      "name": "feedback loop - engineering team loops once then resolves",
+      "description": "AI routes to engineering team. Agent requests feedback (re-run AI routing). On second pass AI routes to engineering again, agent resolves. Process ends at happy-end.",
+      "instructions": [
+        {
+          "type": "CREATE_PROCESS_INSTANCE",
+          "processDefinitionSelector": {
+            "processDefinitionId": "Process_l1jbzht"
+          },
+          "variables": {}
+        },
+        {
+          "type": "COMPLETE_JOB",
+          "jobSelector": {
+            "elementId": "Activity_03z512o"
+          },
+          "variables": { "inquiry": "My integration is broken." }
+        },
+        {
+          "type": "COMPLETE_JOB",
+          "jobSelector": {
+            "elementId": "azure_openai_call"
+          },
+          "variables": { "route": "ENGINEERING" }
+        },
+        {
+          "type": "ASSERT_ELEMENT_INSTANCES",
+          "processInstanceSelector": {
+            "processDefinitionId": "Process_l1jbzht"
+          },
+          "elementSelectors": [
+            { "elementId": "activity_engineering_team" }
+          ],
+          "state": "IS_ACTIVE"
+        },
+        {
+          "type": "COMPLETE_JOB",
+          "jobSelector": {
+            "elementId": "activity_engineering_team"
+          },
+          "variables": { "route": "feedback" }
+        },
+        {
+          "type": "COMPLETE_JOB",
+          "jobSelector": {
+            "elementId": "azure_openai_call"
+          },
+          "variables": { "route": "ENGINEERING" }
+        },
+        {
+          "type": "ASSERT_ELEMENT_INSTANCES",
+          "processInstanceSelector": {
+            "processDefinitionId": "Process_l1jbzht"
+          },
+          "elementSelectors": [
+            { "elementId": "activity_engineering_team" }
+          ],
+          "state": "IS_ACTIVE"
+        },
+        {
+          "type": "COMPLETE_JOB",
+          "jobSelector": {
+            "elementId": "activity_engineering_team"
+          },
+          "variables": { "route": "resolved" }
+        },
+        {
+          "type": "ASSERT_PROCESS_INSTANCE",
+          "processInstanceSelector": {
+            "processDefinitionId": "Process_l1jbzht"
+          },
+          "state": "IS_COMPLETED"
+        }
+      ]
+    }
+  ]
+}
