@@ -1,11 +1,9 @@
 {
   "extends": [
     "bpmnlint:recommended",
-    "plugin:camunda-compat/camunda-cloud-8-4"
+    "plugin:camunda-compat/camunda-cloud-8-6"
   ],
   "rules": {
-    "label-required": "warn",
-    "no-disconnected-flow-elements": "error",
-    "no-implicit-split": "error"
+    "no-bpmndi": "off"
   }
 }
