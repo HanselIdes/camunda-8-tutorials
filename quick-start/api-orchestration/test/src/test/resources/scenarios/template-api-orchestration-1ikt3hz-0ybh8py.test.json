@@ -24,5 +24,6 @@
         }
       ]
     }
-  ]
+  ],
+  "_integrationTestNotes": "Integration tests should verify: (1) make-request (HTTP connector, io.camunda:http-json:1) sends a real GET request to the configured URL (e.g. https://catfact.ninja/fact) and receives a valid JSON response; (2) the response body is accessible via the 'body' variable after the connector completes; (3) confirm no authentication errors or network timeouts occur in the target environment."
 }

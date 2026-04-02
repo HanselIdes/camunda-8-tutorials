@@ -22,5 +22,6 @@
         }
       ]
     }
-  ]
+  ],
+  "_integrationTestNotes": "Integration tests should verify: (1) Run_microservice (job type: orchestrate-something) is picked up and completed by the real job worker implementation; (2) the worker correctly connects to Zeebe and activates jobs of this type; (3) confirm the worker completes the job without errors and the process reaches IS_COMPLETED."
 }

@@ -29,5 +29,6 @@
         }
       ]
     }
-  ]
+  ],
+  "_integrationTestNotes": "Integration tests should verify: (1) the 'creating' task listener worker (job type: assign_new_task) is registered and fires when the user task is created; (2) the worker sets the task assignee via the corrections/assignee mechanism on the real Zeebe user task; (3) the assigned user can claim and complete the task via Tasklist or the API; (4) confirm the task is visible in Tasklist only after the listener job completes."
 }

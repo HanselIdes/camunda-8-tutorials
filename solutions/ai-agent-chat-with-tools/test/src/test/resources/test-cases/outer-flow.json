@@ -212,5 +212,6 @@
         }
       ]
     }
-  ]
+  ],
+  "_integrationTestNotes": "Integration tests should verify: (1) the AI_Agent ad-hoc sub-process (AHSP) invokes the real AWS Bedrock agenticai connector with the task prompt and receives a real model response; (2) tool calls made by the model (GetDateAndTime, ListUsers, Fetch_URL, Search_Recipe) are dispatched to real job workers and results returned to the model; (3) the feedback loop (User_Feedback → gateway) routes correctly when the user requests follow-up; (4) the process ends at Event_0i39jej after the user is satisfied. Run with: env $(cat ../.env | grep -v '^#' | xargs) mvn test -P integration-test (requires AWS Bedrock credentials in ../.env)."
 }

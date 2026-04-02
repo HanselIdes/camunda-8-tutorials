@@ -65,5 +65,6 @@
         }
       ]
     }
-  ]
+  ],
+  "_integrationTestNotes": "Integration tests should verify: (1) decide-dinner user task appears in Tasklist and can be completed by a real user with a meal selection variable; (2) the gateway correctly routes to prepare-chicken or prepare-salad based on the meal variable value; (3) the prepare-* user tasks appear in Tasklist for the correct user; (4) process completes after the preparation task is finished."
 }
