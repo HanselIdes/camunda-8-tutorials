@@ -21,14 +21,17 @@ jobs:
         id: set-matrix
         run: |
           if [ "${{ github.event_name }}" = "push" ]; then
-            # On push to main, test everything
-            BASE="HEAD~1"
+            # On push to main, test all changes in this push
+            BASE="${{ github.event.before }}"
+            HEAD="${{ github.sha }}"
           else
-            BASE="origin/${{ github.base_ref }}"
+            # On pull requests, diff between the PR base and head commits
+            BASE="${{ github.event.pull_request.base.sha }}"
+            HEAD="${{ github.event.pull_request.head.sha }}"
           fi
 
           # Find solutions/quick-start dirs that changed AND have a test subdir
-          CHANGED=$(git diff --name-only "$BASE"...HEAD \
+          CHANGED=$(git diff --name-only "$BASE"..."$HEAD" \
             | grep -E '^(solutions|quick-start)/[^/]+/' \
             | cut -d'/' -f1-2 \
             | sort -u)

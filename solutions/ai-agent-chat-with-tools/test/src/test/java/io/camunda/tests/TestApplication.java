@@ -1,6 +1,5 @@
 package io.camunda.tests;
 
-import io.camunda.process.test.api.TestDeployment;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**

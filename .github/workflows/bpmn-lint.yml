@@ -29,15 +29,15 @@ jobs:
       - name: Install xmllint
         run: sudo apt-get install -y libxml2-utils
 
-      - name: Find changed BPMN files
+      - name: Find changed BPMN/DMN files
         id: changed
         run: |
-          FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD \
-            | grep '\.bpmn$' \
+          FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }}...${{ github.sha }} \
+            | grep -E '\.(bpmn|dmn)$' \
             | grep -v '/target/' \
             | tr '\n' ' ')
           echo "files=$FILES" >> "$GITHUB_OUTPUT"
-          echo "Changed BPMN files: $FILES"
+          echo "Changed BPMN/DMN files: $FILES"
 
       - name: Check XML well-formedness (changed files only)
         if: steps.changed.outputs.files != ''
