@@ -1,0 +1,39 @@
+name: BPMN Lint
+
+on:
+  pull_request:
+    paths:
+      - '**/*.bpmn'
+      - '**/*.dmn'
+      - '.bpmnlintrc'
+
+jobs:
+  lint:
+    name: Lint BPMN/DMN files
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install bpmnlint
+        run: npm install -g bpmnlint bpmnlint-plugin-camunda-compat
+
+      - name: Check XML well-formedness
+        run: |
+          ERRORS=0
+          while IFS= read -r -d '' file; do
+            if ! xmllint --noout "$file" 2>/tmp/xmllint-err; then
+              echo "::error file=$file::$(cat /tmp/xmllint-err)"
+              ERRORS=$((ERRORS + 1))
+            fi
+          done < <(find . -name '*.bpmn' -not -path '*/node_modules/*' -print0)
+          if [ $ERRORS -gt 0 ]; then
+            echo "$ERRORS BPMN file(s) failed XML well-formedness check."
+            exit 1
+          fi
+
+      - name: Run bpmnlint
+        run: bpmnlint --config .bpmnlintrc $(find . -name '*.bpmn' -not -path '*/node_modules/*')

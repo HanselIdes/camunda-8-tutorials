@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "bpmnlint:recommended",
+    "plugin:camunda-compat/recommended"
+  ],
+  "rules": {
+    "camunda-compat/engine-must-be-set": "error",
+    "label-required": "warn",
+    "no-disconnected-flow-elements": "error",
+    "no-implicit-split": "error"
+  }
+}
