@@ -126,7 +126,7 @@
       <bpmn:outgoing>Flow_0wpqg90</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:textAnnotation id="TextAnnotation_1x50j3c">
-      <bpmn:text>Process can be started with payload: {"inquiry": "some meaningful text here..."}</bpmn:text>
+      <bpmn:text>Triggered when a user inquiry is received. The process assigns the inquiry to a support agent and escalates via email every 2 days until a reply is received; the happy-path outcome is the reply logged. Start with payload: {"inquiry": "some meaningful text here..."}</bpmn:text>
     </bpmn:textAnnotation>
     <bpmn:association id="Association_1ceuiaz" sourceRef="InquiryFromUserReceivedStartEvent" targetRef="TextAnnotation_1x50j3c" />
   </bpmn:process>

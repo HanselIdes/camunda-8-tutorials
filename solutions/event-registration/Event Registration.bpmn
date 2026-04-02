@@ -216,6 +216,10 @@
  }</zeebe:userTaskForm>
     </bpmn:extensionElements>
     <bpmn:sequenceFlow id="Flow_15hhweo" sourceRef="StartEvent_Form" targetRef="Activity_StoreRegistrations" />
+    <bpmn:textAnnotation id="TextAnnotation_event_reg_intro">
+      <bpmn:text>Triggered when an attendee submits an event registration form. The happy-path outcome is the attendee confirmed, optionally added to the newsletter, and notified by email.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_event_reg_intro" associationDirection="None" sourceRef="StartEvent_Form" targetRef="TextAnnotation_event_reg_intro" />
     <bpmn:startEvent id="StartEvent_Form" name="Event registration received">
       <bpmn:extensionElements>
         <zeebe:properties>

@@ -46,7 +46,11 @@
     <bpmn:sequenceFlow id="Flow_081poii" sourceRef="Activity_02xqc92" targetRef="Gateway_11m63z7" />
     <bpmn:sequenceFlow id="Flow_0t1d6l2" sourceRef="Activity_1vv1nnm" targetRef="Gateway_11m63z7" />
     <bpmn:sequenceFlow id="Flow_15xuq47" sourceRef="Gateway_11m63z7" targetRef="Activity_0tw025l" />
-    <bpmn:startEvent id="Event_1k76lxn" name="booking request received">
+    <bpmn:textAnnotation id="TextAnnotation_car_rental_intro">
+      <bpmn:text>Triggered when a customer submits a car rental booking request. The happy-path outcome is all checks passed, car reserved, rental completed, and booking confirmed.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_car_rental_intro" associationDirection="None" sourceRef="Event_1k76lxn" targetRef="TextAnnotation_car_rental_intro" />
+    <bpmn:startEvent id="Event_1k76lxn" name="Booking request received">
       <bpmn:extensionElements>
         <zeebe:properties>
           <zeebe:property name="camundaModeler:exampleOutputJson" value="{&#10;  &#34;bookingId&#34;: 123,&#10;  &#34;rentDuration&#34;: &#34;P2D&#34;,&#10;  &#34;rentalCarValue&#34;: 35000,&#10;  &#34;rentCost&#34;: 140&#10;}" />

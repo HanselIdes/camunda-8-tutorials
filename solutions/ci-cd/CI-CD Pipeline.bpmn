@@ -133,7 +133,11 @@ For more information, read https://docs.camunda.io/docs/guides/devops-lifecycle/
   "type": "default"
 }</zeebe:userTaskForm>
     </bpmn:extensionElements>
-    <bpmn:startEvent id="startCicd" name="CI/CD kick off">
+    <bpmn:textAnnotation id="TextAnnotation_cicd_intro">
+      <bpmn:text>Triggered when a CI/CD pipeline run is initiated from Web Modeler. The happy-path outcome is all files deployed to production via GitLab merge request.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_cicd_intro" associationDirection="None" sourceRef="startCicd" targetRef="TextAnnotation_cicd_intro" />
+    <bpmn:startEvent id="startCicd" name="CI/CD pipeline started">
       <bpmn:extensionElements>
         <zeebe:formDefinition formKey="camunda-forms:bpmn:UserTaskForm_22jqpc9" />
         <zeebe:properties>
@@ -546,7 +550,7 @@ For more information, read https://docs.camunda.io/docs/guides/devops-lifecycle/
       <bpmn:incoming>Flow_01e3v4d</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_0cray7s" sourceRef="openMergeRequestSubprocess" targetRef="splitCheckMergeRequestStatus" />
-    <bpmn:exclusiveGateway id="joinCheckMergeRequestStatus" name="Check MR status">
+    <bpmn:exclusiveGateway id="joinCheckMergeRequestStatus" name="Merge request status?">
       <bpmn:incoming>Flow_1bohcmb</bpmn:incoming>
       <bpmn:outgoing>Flow_034n41h</bpmn:outgoing>
       <bpmn:outgoing>Flow_1y21gn7</bpmn:outgoing>

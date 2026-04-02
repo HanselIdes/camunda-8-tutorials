@@ -29,7 +29,11 @@
     <bpmn:sequenceFlow id="Flow_0t0fgj1" sourceRef="Activity_0neec1e" targetRef="Event_09ign1n" />
     <bpmn:sequenceFlow id="Flow_0h21b3d" sourceRef="Activity_0ii025u" targetRef="Event_12a1edv" />
     <bpmn:sequenceFlow id="Flow_05vdl8x" sourceRef="Event_09ign1n" targetRef="Activity_0ii025u" />
-    <bpmn:startEvent id="StartEvent_1" name="loan requested">
+    <bpmn:textAnnotation id="TextAnnotation_loan_origination_intro">
+      <bpmn:text>Triggered when a customer submits a loan application via the bank chatbot. The happy-path outcome is the loan approved and the customer notified via the bank's systems.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_loan_origination_intro" associationDirection="None" sourceRef="StartEvent_1" targetRef="TextAnnotation_loan_origination_intro" />
+    <bpmn:startEvent id="StartEvent_1" name="Loan requested">
       <bpmn:extensionElements>
         <zeebe:formDefinition formId="Form_16l6p9i" />
         <zeebe:properties>
@@ -73,7 +77,7 @@
         <bpmn:incoming>Flow_0f5fqcz</bpmn:incoming>
         <bpmn:outgoing>Flow_075y3tx</bpmn:outgoing>
       </bpmn:businessRuleTask>
-      <bpmn:exclusiveGateway id="Gateway_0z4748g" name="loan results?" default="Flow_1dh4tok">
+      <bpmn:exclusiveGateway id="Gateway_0z4748g" name="Loan results?" default="Flow_1dh4tok">
         <bpmn:incoming>Flow_075y3tx</bpmn:incoming>
         <bpmn:outgoing>Flow_0l1o42y</bpmn:outgoing>
         <bpmn:outgoing>Flow_00qm36p</bpmn:outgoing>
@@ -83,7 +87,7 @@
         <bpmn:incoming>Flow_02lqgsk</bpmn:incoming>
         <bpmn:errorEventDefinition id="ErrorEventDefinition_0554m4g" errorRef="Error_1waf4p2" />
       </bpmn:endEvent>
-      <bpmn:exclusiveGateway id="Gateway_0qv5443" name="underwriting result?">
+      <bpmn:exclusiveGateway id="Gateway_0qv5443" name="Underwriting result?">
         <bpmn:incoming>Flow_0cprzim</bpmn:incoming>
         <bpmn:outgoing>Flow_02lqgsk</bpmn:outgoing>
         <bpmn:outgoing>Flow_01k4abh</bpmn:outgoing>

@@ -11,6 +11,10 @@
     <bpmn:messageFlow id="Flow_02bhzx9" name="REST" sourceRef="Activity_0etdda4" targetRef="Participant_1i465kq" />
   </bpmn:collaboration>
   <bpmn:process id="template-ticket-booking-18vy8wg" isExecutable="true">
+    <bpmn:textAnnotation id="TextAnnotation_ticket_intro">
+      <bpmn:text>Triggered when a customer submits a ticket booking request. The happy-path outcome is seats reserved, payment received, ticket generated, and booking confirmed.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_ticket_intro" associationDirection="None" sourceRef="StartEvent_1" targetRef="TextAnnotation_ticket_intro" />
     <bpmn:startEvent id="StartEvent_1" name="Booking submitted">
       <bpmn:outgoing>Flow_19ebf54</bpmn:outgoing>
     </bpmn:startEvent>

@@ -55,7 +55,11 @@
     <bpmn:sequenceFlow id="Flow_1izp9te" sourceRef="Event_0z73nuo" targetRef="GetAndConfirmReminderTask" />
     <bpmn:sequenceFlow id="Flow_0axp5vf" sourceRef="ClarifyRequestTask" targetRef="Gateway_0sz0cst" />
     <bpmn:sequenceFlow id="Flow_1d5wcnk" sourceRef="GetLineManagerTask" targetRef="Gateway_0sz0cst" />
-    <bpmn:startEvent id="TimeOffNeededStartEvent" name="Time off&#10;needed">
+    <bpmn:textAnnotation id="TextAnnotation_absence_intro">
+      <bpmn:text>Triggered when an employee needs time off. The happy-path outcome is the absence request being approved, logged in the HR system, and the employee notified.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_absence_intro" associationDirection="None" sourceRef="TimeOffNeededStartEvent" targetRef="TextAnnotation_absence_intro" />
+    <bpmn:startEvent id="TimeOffNeededStartEvent" name="Time off needed">
       <bpmn:outgoing>Flow_15yg3k5</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:userTask id="RequestAbsenceTask" name="Request absence">
@@ -88,7 +92,7 @@
       <bpmn:incoming>Flow_00xi8zy</bpmn:incoming>
       <bpmn:outgoing>Flow_0225a20</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="GetAndConfirmReminderTask" name="Get and confirm reminder">
+    <bpmn:userTask id="GetAndConfirmReminderTask" name="Acknowledge approval reminder">
       <bpmn:extensionElements>
         <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_0dl4rab" />
         <zeebe:assignmentDefinition assignee="=assignedLineManager" />
@@ -99,7 +103,7 @@
     <bpmn:endEvent id="Event_0zynvca" name="Line manager reminded">
       <bpmn:incoming>Flow_07mywsg</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:userTask id="ClarifyRequestTask" name="Clarify&#10;request">
+    <bpmn:userTask id="ClarifyRequestTask" name="Clarify request">
       <bpmn:extensionElements>
         <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_080698f" />
         <zeebe:assignmentDefinition assignee="=employeeName" />
@@ -107,7 +111,7 @@
       <bpmn:incoming>Flow_1f7d78d</bpmn:incoming>
       <bpmn:outgoing>Flow_0axp5vf</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="GetNotification" name="Get notification">
+    <bpmn:userTask id="GetNotification" name="Acknowledge approval decision">
       <bpmn:extensionElements>
         <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_2thhsc1" />
         <zeebe:assignmentDefinition assignee="=employeeName" />
