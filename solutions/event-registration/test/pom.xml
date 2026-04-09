@@ -67,6 +67,7 @@
                 <directory>../</directory>
                 <includes>
                     <include>Event Registration.bpmn</include>
+                    <include>*.form</include>
                 </includes>
             </testResource>
         </testResources>

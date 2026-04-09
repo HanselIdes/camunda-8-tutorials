@@ -1,4 +1,9 @@
 {
+  "type": "default",
+  "id": "ReviewExpenseReport",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.9.0",
+  "schemaVersion": 19,
   "components": [
     {
       "text": "# Expense Claim Review\n\nPlease review the following expense reimbursement claim, and either approve or reject it.",
@@ -16,10 +21,7 @@
         "row": "Row_1ef2qla",
         "columns": null
       },
-      "id": "Field_1sbsc67",
-      "conditional": {
-        "hide": "=isReview"
-      }
+      "id": "Field_1sbsc67"
     },
     {
       "label": "First name",
@@ -30,10 +32,6 @@
       },
       "id": "Field_0zyjfuh",
       "key": "firstName",
-      "validate": {
-        "required": false
-      },
-      "readonly": false,
       "disabled": true
     },
     {
@@ -45,9 +43,6 @@
       },
       "id": "Field_0m4s208",
       "key": "lastName",
-      "validate": {
-        "required": false
-      },
       "disabled": true
     },
     {
@@ -62,34 +57,15 @@
       "appearance": {
         "prefixAdorner": "@"
       },
-      "validate": {
-        "validationType": "email",
-        "required": false
-      },
       "disabled": true
     },
     {
       "values": [
-        {
-          "label": "IT",
-          "value": "IT"
-        },
-        {
-          "label": "Product",
-          "value": "product"
-        },
-        {
-          "label": "Finance",
-          "value": "finance"
-        },
-        {
-          "label": "Accounting",
-          "value": "accounting"
-        },
-        {
-          "label": "Marketing",
-          "value": "marketing"
-        }
+        { "label": "IT", "value": "IT" },
+        { "label": "Product", "value": "product" },
+        { "label": "Finance", "value": "finance" },
+        { "label": "Accounting", "value": "accounting" },
+        { "label": "Marketing", "value": "marketing" }
       ],
       "label": "Department",
       "type": "select",
@@ -122,21 +98,12 @@
       },
       "id": "Field_0z4pwh0",
       "key": "expenseDate",
-      "validate": {
-        "required": false
-      },
       "disabled": true
     },
     {
       "values": [
-        {
-          "label": "Custom",
-          "value": "custom"
-        },
-        {
-          "label": "Travel",
-          "value": "travel"
-        }
+        { "label": "Custom", "value": "custom" },
+        { "label": "Travel", "value": "travel" }
       ],
       "label": "Expense type",
       "type": "select",
@@ -192,7 +159,7 @@
       "id": "Field_1xz2kcy",
       "key": "travelLocation",
       "appearance": {
-        "prefixAdorner": "\ud83d\udccd"
+        "prefixAdorner": "📍"
       },
       "conditional": {
         "hide": "=not(expenseType = \"travel\")"
@@ -222,9 +189,6 @@
       },
       "id": "Field_136skvr",
       "key": "expensePurpose",
-      "validate": {
-        "required": false
-      },
       "description": "Describe the purpose of your expense. A good description increases the likelihood of quick approval.",
       "disabled": true
     },
@@ -240,16 +204,12 @@
       "appearance": {
         "prefixAdorner": "USD"
       },
-      "validate": {
-        "required": false
-      },
       "decimalDigits": 2,
       "increment": "0.5",
       "disabled": true
     },
     {
       "text": "---",
-      "label": "Text view",
       "type": "text",
       "layout": {
         "row": "Row_1nymijp",
@@ -259,7 +219,6 @@
     },
     {
       "text": "### Approval",
-      "label": "Text view",
       "type": "text",
       "layout": {
         "row": "Row_00khae6",
@@ -269,14 +228,8 @@
     },
     {
       "values": [
-        {
-          "label": "I approve the expense claim.",
-          "value": "approved"
-        },
-        {
-          "label": "I reject the expense claim.",
-          "value": "rejected"
-        }
+        { "label": "I approve the expense claim.", "value": "approved" },
+        { "label": "I reject the expense claim.", "value": "rejected" }
       ],
       "label": "Approval outcome",
       "type": "radio",
@@ -307,14 +260,5 @@
         "minLength": 10
       }
     }
-  ],
-  "type": "default",
-  "id": "Form_ExpenseClaimReview",
-  "executionPlatform": "Camunda Cloud",
-  "executionPlatformVersion": "8.2.0",
-  "exporter": {
-    "name": "Camunda Modeler",
-    "version": "5.12.0-rc.0"
-  },
-  "schemaVersion": 9
+  ]
 }

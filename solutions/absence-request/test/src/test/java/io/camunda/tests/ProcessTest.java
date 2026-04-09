@@ -19,7 +19,15 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 @SpringBootTest
 @CamundaSpringProcessTest
-@TestDeployment(resources = {"Absence Request.bpmn"})
+@TestDeployment(resources = {
+    "Absence Request.bpmn",
+    "RequestAbsence.form",
+    "ClarifyRequest.form",
+    "AcknowledgeApprovalReminder.form",
+    "ApproveAbsence.form",
+    "LogAbsenceInHRSystem.form",
+    "AcknowledgeApprovalDecision.form"
+})
 public class ProcessTest {
 
     @Autowired

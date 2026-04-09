@@ -1,0 +1,72 @@
+{
+  "type": "default",
+  "id": "WorkOnInquiry",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.9.0",
+  "schemaVersion": 19,
+  "components": [
+    {
+      "text": "# Customer Inquiry",
+      "type": "text",
+      "layout": {
+        "row": "Row_title",
+        "columns": null
+      },
+      "id": "Field_0i24v3q"
+    },
+    {
+      "label": "Customer message",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_message",
+        "columns": null
+      },
+      "id": "Field_0wf2m58",
+      "key": "customer_message",
+      "description": "Free text that the customer sent.",
+      "validate": {
+        "required": true
+      },
+      "readonly": true
+    },
+    {
+      "text": "# Response",
+      "type": "text",
+      "layout": {
+        "row": "Row_responseHeading",
+        "columns": null
+      },
+      "id": "Field_1faoqh7"
+    },
+    {
+      "values": [
+        { "label": "Resolved", "value": "resolved" },
+        { "label": "Retry with Feedback", "value": "feedback" },
+        { "label": "Route to Engineering Team", "value": "ENGINEERING_TEAM" },
+        { "label": "Route to Sales Team", "value": "SALES_TEAM" },
+        { "label": "Route to Legal Team", "value": "LEGAL_TEAM" }
+      ],
+      "label": "Select",
+      "type": "select",
+      "layout": {
+        "row": "Row_routeSelect",
+        "columns": null
+      },
+      "id": "Field_0w3wry0",
+      "key": "route",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Feedback",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_feedback",
+        "columns": null
+      },
+      "id": "Field_13710np",
+      "key": "feedback"
+    }
+  ]
+}

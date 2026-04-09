@@ -1,4 +1,9 @@
 {
+  "type": "default",
+  "id": "CreateExpenseReport",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.9.0",
+  "schemaVersion": 19,
   "components": [
     {
       "text": "# Expense Claim",
@@ -29,10 +34,7 @@
         "columns": null
       },
       "id": "Field_0zyjfuh",
-      "key": "firstName",
-      "validate": {
-        "required": false
-      }
+      "key": "firstName"
     },
     {
       "label": "Last name",
@@ -42,10 +44,7 @@
         "columns": null
       },
       "id": "Field_0m4s208",
-      "key": "lastName",
-      "validate": {
-        "required": false
-      }
+      "key": "lastName"
     },
     {
       "label": "Email",
@@ -66,26 +65,11 @@
     },
     {
       "values": [
-        {
-          "label": "IT",
-          "value": "IT"
-        },
-        {
-          "label": "Product",
-          "value": "product"
-        },
-        {
-          "label": "Finance",
-          "value": "finance"
-        },
-        {
-          "label": "Accounting",
-          "value": "accounting"
-        },
-        {
-          "label": "Marketing",
-          "value": "marketing"
-        }
+        { "label": "IT", "value": "IT" },
+        { "label": "Product", "value": "product" },
+        { "label": "Finance", "value": "finance" },
+        { "label": "Accounting", "value": "accounting" },
+        { "label": "Marketing", "value": "marketing" }
       ],
       "label": "Department",
       "type": "select",
@@ -148,14 +132,8 @@
     },
     {
       "values": [
-        {
-          "label": "Custom",
-          "value": "custom"
-        },
-        {
-          "label": "Travel",
-          "value": "travel"
-        }
+        { "label": "Custom", "value": "custom" },
+        { "label": "Travel", "value": "travel" }
       ],
       "label": "Expense type",
       "type": "select",
@@ -199,7 +177,7 @@
       }
     },
     {
-      "text": "\u26a0\ufe0f The end date must be after the start date.",
+      "text": "The end date must be after the start date.",
       "type": "text",
       "layout": {
         "row": "Row_1hua3bm",
@@ -220,7 +198,7 @@
       "id": "Field_1xz2kcy",
       "key": "travelLocation",
       "appearance": {
-        "prefixAdorner": "\ud83d\udccd"
+        "prefixAdorner": "📍"
       },
       "conditional": {
         "hide": "=not(expenseType = \"travel\")"
@@ -248,9 +226,6 @@
       },
       "id": "Field_136skvr",
       "key": "expensePurpose",
-      "validate": {
-        "required": false
-      },
       "description": "Describe the purpose of your expense. A good description increases the likelihood of quick approval."
     },
     {
@@ -271,14 +246,5 @@
       "decimalDigits": 2,
       "increment": "0.5"
     }
-  ],
-  "type": "default",
-  "id": "Form_ExpenseClaim",
-  "executionPlatform": "Camunda Cloud",
-  "executionPlatformVersion": "8.2.0",
-  "exporter": {
-    "name": "Camunda Modeler",
-    "version": "5.12.0-rc.0"
-  },
-  "schemaVersion": 9
+  ]
 }

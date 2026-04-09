@@ -5,137 +5,10 @@
 
 For more information, read https://docs.camunda.io/docs/guides/devops-lifecycle/integrate-web-modeler-in-ci-cd/</bpmn:documentation>
     <bpmn:extensionElements>
-      <zeebe:userTaskForm id="UserTaskForm_22jqpc9">{
-  "executionPlatform": "Camunda Cloud",
-  "executionPlatformVersion": "8.4.0",
-  "exporter": {
-    "name": "Camunda Web Modeler",
-    "version": "8c03b57"
-  },
-  "schemaVersion": 16,
-  "id": "gitlabStartForm",
-  "components": [
-    {
-      "text": "You can start the blueprint by filling out this form.\nRefer to the [README file](https://github.com/camunda/camunda-platform-tutorials/blob/main/solutions/ci-cd/README.md) to learn more about how to use this blueprint.",
-      "label": "Text view",
-      "type": "text",
-      "layout": {
-        "row": "Row1",
-        "columns": null
-      },
-      "id": "gitlabStartFormIntroduction"
-    },
-    {
-      "label": "Separator",
-      "type": "separator",
-      "layout": {
-        "row": "Row2",
-        "columns": null
-      },
-      "id": "gitlabStartFormSeparator"
-    },
-    {
-      "label": "Folder ID",
-      "type": "textfield",
-      "layout": {
-        "row": "Row3",
-        "columns": null
-      },
-      "id": "inputFolderId",
-      "key": "folderId",
-      "description": "Web Modeler ID of the folder to start the CI/CD pipeline for. All files within the root of the folder (i.e. not in subfolders) will be included in the pipeline.",
-      "validate": {
-        "required": true
-      }
-    },
-    {
-      "label": "Target base branch",
-      "type": "textfield",
-      "layout": {
-        "row": "Row4",
-        "columns": null
-      },
-      "id": "fieldGitlabBranch",
-      "key": "gitlabBranch",
-      "validate": {
-        "required": true
-      },
-      "description": "Branch to open the merge request against."
-    },
-    {
-      "label": "Target GitLab instance base URL",
-      "type": "textfield",
-      "layout": {
-        "row": "Row5",
-        "columns": null
-      },
-      "id": "fieldGitlabBaseUrl",
-      "key": "gitlabBaseUrl",
-      "defaultValue": "https://gitlab.com"
-    },
-    {
-      "label": "Target GitLab project id",
-      "type": "textfield",
-      "layout": {
-        "row": "Row5",
-        "columns": null
-      },
-      "id": "fieldGitlabProjectId",
-      "key": "gitlabProjectId",
-      "validate": {
-        "required": true
-      }
-    }
-  ],
-  "type": "default"
-}</zeebe:userTaskForm>
-      <zeebe:userTaskForm id="UserTaskForm_2vanl4a">{
-  "executionPlatform": "Camunda Cloud",
-  "executionPlatformVersion": "8.4.0",
-  "exporter": {
-    "name": "Camunda Web Modeler",
-    "version": "8c03b57"
-  },
-  "schemaVersion": 16,
-  "id": "manualQaForm",
-  "components": [
-    {
-      "text": "This is an example of a user task for a manual QA test after deploying to the development stage and should be adapted to your individual use case.",
-      "label": "Text view",
-      "type": "text",
-      "layout": {
-        "row": "Row1",
-        "columns": null
-      },
-      "id": "manualQaFormIntroduction"
-    },
-    {
-      "label": "Separator",
-      "type": "separator",
-      "layout": {
-        "row": "Row2",
-        "columns": null
-      },
-      "id": "manualQaFormSeparator"
-    },
-    {
-      "label": "QA successful",
-      "type": "checkbox",
-      "layout": {
-        "row": "Row3",
-        "columns": null
-      },
-      "id": "fieldQaSuccessfulCheck",
-      "key": "qaSuccessfulCheck",
-      "defaultValue": true
-    }
-  ],
-  "type": "default"
-}</zeebe:userTaskForm>
     </bpmn:extensionElements>
     <bpmn:startEvent id="startCicd" name="CI/CD pipeline started">
       <bpmn:extensionElements>
-        <zeebe:formDefinition formKey="camunda-forms:bpmn:UserTaskForm_22jqpc9" />
+        <zeebe:formDefinition formId="CICDPipelineStart" />
         <zeebe:properties>
           <zeebe:property name="publicAccess" value="true" />
         </zeebe:properties>
@@ -576,7 +449,7 @@ For more information, read https://docs.camunda.io/docs/guides/devops-lifecycle/
       <bpmn:userTask id="manualQaTest" name="Manual QA testing">
         <bpmn:extensionElements>
         <zeebe:userTask />
-          <zeebe:formDefinition externalReference="UserTaskForm_2vanl4a" />
+          <zeebe:formDefinition formId="ManualQATesting" />
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_00xavty</bpmn:incoming>
         <bpmn:outgoing>Flow_08g4fny</bpmn:outgoing>

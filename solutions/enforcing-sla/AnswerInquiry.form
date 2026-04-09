@@ -1,0 +1,54 @@
+{
+  "type": "default",
+  "id": "AnswerInquiry",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.9.0",
+  "schemaVersion": 19,
+  "components": [
+    {
+      "text": "## Answer Customer Inquiry",
+      "type": "text",
+      "id": "Field_1ju999p",
+      "layout": {
+        "row": "Row_title"
+      }
+    },
+    {
+      "label": "Inquiry",
+      "type": "textfield",
+      "id": "Field_07g49ub",
+      "key": "inquiry",
+      "disabled": true,
+      "defaultValue": "Some important information about missing or failing features...",
+      "layout": {
+        "row": "Row_inquiry"
+      }
+    },
+    {
+      "label": "Answer",
+      "type": "textfield",
+      "id": "Field_1di2nmv",
+      "key": "answer",
+      "description": "Your answer",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "Row_answer"
+      }
+    },
+    {
+      "label": "Enquiry Key",
+      "type": "textfield",
+      "id": "Field_1e7gd5u",
+      "key": "key",
+      "description": "Enter some case identifier (usually it will be generated)",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "Row_key"
+      }
+    }
+  ]
+}

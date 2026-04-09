@@ -83,6 +83,7 @@
                 <directory>../</directory>
                 <includes>
                     <include>Intelligent routing with Azure AI.bpmn</include>
+                    <include>*.form</include>
                 </includes>
             </testResource>
         </testResources>

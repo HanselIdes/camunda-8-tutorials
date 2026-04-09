@@ -19,7 +19,7 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 @SpringBootTest
 @CamundaSpringProcessTest
-@TestDeployment(resources = {"Event Registration.bpmn"})
+@TestDeployment(resources = {"Event Registration.bpmn", "EventRegistration.form"})
 public class ProcessTest {
 
     @Autowired

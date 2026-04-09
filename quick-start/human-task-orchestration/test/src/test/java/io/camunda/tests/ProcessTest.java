@@ -11,7 +11,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 @CamundaSpringProcessTest
-@TestDeployment(resources = {"Quick Start_ Human Tasks.bpmn"})
+@TestDeployment(resources = {
+    "Quick Start_ Human Tasks.bpmn",
+    "DecideWhatsForDinner.form"
+})
 public class ProcessTest {
 
     @Autowired

@@ -1,0 +1,39 @@
+{
+  "type": "default",
+  "id": "DecideWhatsForDinner",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.9.0",
+  "schemaVersion": 19,
+  "components": [
+    {
+      "text": "# What's for dinner",
+      "type": "text",
+      "id": "Field_1j1elge",
+      "layout": {
+        "row": "Row_title"
+      }
+    },
+    {
+      "label": "Meal",
+      "values": [
+        {
+          "label": "Chicken",
+          "value": "chicken"
+        },
+        {
+          "label": "Salad",
+          "value": "salad"
+        }
+      ],
+      "type": "radio",
+      "id": "Field_0e0gi28",
+      "key": "meal",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "Row_meal"
+      }
+    }
+  ]
+}

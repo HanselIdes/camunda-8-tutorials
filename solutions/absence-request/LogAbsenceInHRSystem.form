@@ -1,0 +1,26 @@
+{
+  "type": "default",
+  "id": "LogAbsenceInHRSystem",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.9.0",
+  "schemaVersion": 19,
+  "components": [
+    {
+      "text": "Please make sure to log the absence in the HR system.",
+      "type": "text",
+      "id": "Field_0yh2bru",
+      "layout": {
+        "row": "Row_instruction"
+      }
+    },
+    {
+      "label": "I logged the absence in the HR system",
+      "type": "checkbox",
+      "id": "Field_0aa5ggk",
+      "key": "absenceLogged",
+      "layout": {
+        "row": "Row_confirmation"
+      }
+    }
+  ]
+}

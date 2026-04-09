@@ -1,0 +1,78 @@
+{
+  "type": "default",
+  "id": "CICDPipelineStart",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.9.0",
+  "schemaVersion": 19,
+  "components": [
+    {
+      "text": "You can start the blueprint by filling out this form.\nRefer to the [README file](https://github.com/camunda/camunda-platform-tutorials/blob/main/solutions/ci-cd/README.md) to learn more about how to use this blueprint.",
+      "type": "text",
+      "layout": {
+        "row": "Row_intro",
+        "columns": null
+      },
+      "id": "gitlabStartFormIntroduction"
+    },
+    {
+      "type": "separator",
+      "layout": {
+        "row": "Row_separator",
+        "columns": null
+      },
+      "id": "gitlabStartFormSeparator"
+    },
+    {
+      "label": "Folder ID",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_folderId",
+        "columns": null
+      },
+      "id": "inputFolderId",
+      "key": "folderId",
+      "description": "Web Modeler ID of the folder to start the CI/CD pipeline for. All files within the root of the folder (i.e. not in subfolders) will be included in the pipeline.",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Target base branch",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_branch",
+        "columns": null
+      },
+      "id": "fieldGitlabBranch",
+      "key": "gitlabBranch",
+      "validate": {
+        "required": true
+      },
+      "description": "Branch to open the merge request against."
+    },
+    {
+      "label": "Target GitLab instance base URL",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_gitlabConfig",
+        "columns": null
+      },
+      "id": "fieldGitlabBaseUrl",
+      "key": "gitlabBaseUrl",
+      "defaultValue": "https://gitlab.com"
+    },
+    {
+      "label": "Target GitLab project id",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_gitlabConfig",
+        "columns": null
+      },
+      "id": "fieldGitlabProjectId",
+      "key": "gitlabProjectId",
+      "validate": {
+        "required": true
+      }
+    }
+  ]
+}
