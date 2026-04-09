@@ -54,7 +54,7 @@
       <bpmn:extensionElements>
         <zeebe:userTask />
         <zeebe:taskDefinition type="test-worker" retries="1" />
-        <zeebe:formDefinition formId="Form_05b6cf95-4c81-452b-bebb-9d4f516e8465" />
+        <zeebe:formDefinition formId="RequestAbsence" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_15yg3k5</bpmn:incoming>
       <bpmn:outgoing>Flow_0xnutez</bpmn:outgoing>
@@ -76,7 +76,7 @@
       <bpmn:extensionElements>
         <zeebe:userTask />
         <zeebe:assignmentDefinition assignee="=assignedLineManager" />
-        <zeebe:formDefinition formId="Form_1a49c114-43ae-491a-8b1d-8be9956e8496" />
+        <zeebe:formDefinition formId="ApproveAbsence" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_00xi8zy</bpmn:incoming>
       <bpmn:outgoing>Flow_0225a20</bpmn:outgoing>
@@ -84,7 +84,7 @@
     <bpmn:userTask id="GetAndConfirmReminderTask" name="Acknowledge approval reminder">
       <bpmn:extensionElements>
         <zeebe:userTask />
-        <zeebe:formDefinition formId="Form_145b7eab-a1fa-46b9-899d-8b51c3eb26d2" />
+        <zeebe:formDefinition formId="AcknowledgeApprovalReminder" />
         <zeebe:assignmentDefinition assignee="=assignedLineManager" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1izp9te</bpmn:incoming>
@@ -96,7 +96,7 @@
     <bpmn:userTask id="ClarifyRequestTask" name="Clarify request">
       <bpmn:extensionElements>
         <zeebe:userTask />
-        <zeebe:formDefinition formId="Form_21505344-3f9e-443c-b488-4cc88422ec3e" />
+        <zeebe:formDefinition formId="ClarifyRequest" />
         <zeebe:assignmentDefinition assignee="=employeeName" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1f7d78d</bpmn:incoming>
@@ -105,7 +105,7 @@
     <bpmn:userTask id="GetNotification" name="Acknowledge approval decision">
       <bpmn:extensionElements>
         <zeebe:userTask />
-        <zeebe:formDefinition formId="Form_05218fe1-7e95-4430-8387-d74c6dc7b58b" />
+        <zeebe:formDefinition formId="AcknowledgeApprovalDecision" />
         <zeebe:assignmentDefinition assignee="=employeeName" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1wt1dkc</bpmn:incoming>
@@ -123,7 +123,7 @@
     <bpmn:userTask id="LogAbsenceTask" name="Log absence in HR system">
       <bpmn:extensionElements>
         <zeebe:userTask />
-        <zeebe:formDefinition formId="Form_39c4a16f-4acd-4181-bd4f-abab9b13f7aa" />
+        <zeebe:formDefinition formId="LogAbsenceInHRSystem" />
         <zeebe:assignmentDefinition assignee="=assignedLineManager" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1ynjfct</bpmn:incoming>

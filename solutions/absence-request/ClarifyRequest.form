@@ -1,0 +1,67 @@
+{
+  "type": "default",
+  "id": "ClarifyRequest",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.9.0",
+  "schemaVersion": 19,
+  "components": [
+    {
+      "text": "## Your absence request has not been approved yet and needs further clarification.",
+      "type": "text",
+      "id": "Field_15mb7b4",
+      "layout": {
+        "row": "Row_heading"
+      }
+    },
+    {
+      "text": "=\"Your line manager \" + assignedLineManager + \" stated the following clarification comment:\\n\\n\" + clarificationCommentLineManager",
+      "type": "text",
+      "id": "Field_1yjc9hs",
+      "layout": {
+        "row": "Row_managerComment"
+      }
+    },
+    {
+      "text": "Please adjust your request as stated in the comment:",
+      "type": "text",
+      "id": "Field_0d02fse",
+      "layout": {
+        "row": "Row_instruction"
+      }
+    },
+    {
+      "subtype": "date",
+      "dateLabel": "Absence start date",
+      "label": "Date time",
+      "type": "datetime",
+      "id": "Field_1k7qvcw",
+      "key": "absenceStartDate",
+      "layout": {
+        "row": "Row_dates"
+      }
+    },
+    {
+      "subtype": "date",
+      "dateLabel": "Absence end date (including)",
+      "label": "Date time",
+      "type": "datetime",
+      "id": "Field_06gaeho",
+      "key": "absenceEndDate",
+      "layout": {
+        "row": "Row_dates"
+      }
+    },
+    {
+      "label": "Comment to further clarify",
+      "type": "textfield",
+      "id": "Field_1wfun62",
+      "key": "clarificationCommentEmployee",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "Row_employeeComment"
+      }
+    }
+  ]
+}

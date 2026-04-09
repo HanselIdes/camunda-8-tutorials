@@ -52,7 +52,7 @@
         <zeebe:ioMapping>
           <zeebe:input source="=customer_inquiry" target="customer_message" />
         </zeebe:ioMapping>
-        <zeebe:formDefinition formId="Form_hezkvru" />
+        <zeebe:formDefinition formId="WorkOnInquiry" />
       </bpmn:extensionElements>
       <bpmn:incoming>flow_sales_inquiry</bpmn:incoming>
       <bpmn:outgoing>Flow_07h5nkp</bpmn:outgoing>
@@ -63,7 +63,7 @@
         <zeebe:ioMapping>
           <zeebe:input source="=customer_inquiry" target="customer_message" />
         </zeebe:ioMapping>
-        <zeebe:formDefinition formId="Form_hezkvru" />
+        <zeebe:formDefinition formId="WorkOnInquiry" />
       </bpmn:extensionElements>
       <bpmn:incoming>flow_technical_inquiry</bpmn:incoming>
       <bpmn:outgoing>Flow_088ove7</bpmn:outgoing>
@@ -81,7 +81,7 @@
         <zeebe:ioMapping>
           <zeebe:input source="=customer_inquiry" target="customer_message" />
         </zeebe:ioMapping>
-        <zeebe:formDefinition formId="Form_hezkvru" />
+        <zeebe:formDefinition formId="WorkOnInquiry" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1gj1kgq</bpmn:incoming>
       <bpmn:outgoing>Flow_07c5po9</bpmn:outgoing>
@@ -106,7 +106,7 @@
     <bpmn:userTask id="Activity_03z512o" name="Enter inquiry (customer)">
       <bpmn:extensionElements>
         <zeebe:userTask />
-        <zeebe:formDefinition formId="Form_ogq5ow1" />
+        <zeebe:formDefinition formId="EnterInquiry" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0mqrso0</bpmn:incoming>
       <bpmn:outgoing>Flow_16ccfjo</bpmn:outgoing>
@@ -160,7 +160,7 @@
     <bpmn:userTask id="Activity_1ltiek0" name="Work on inquiry (default)">
       <bpmn:extensionElements>
         <zeebe:userTask />
-        <zeebe:formDefinition formId="Form_hezkvru" />
+        <zeebe:formDefinition formId="WorkOnInquiry" />
         <zeebe:ioMapping>
           <zeebe:input source="=customer_inquiry" target="customer_message" />
         </zeebe:ioMapping>

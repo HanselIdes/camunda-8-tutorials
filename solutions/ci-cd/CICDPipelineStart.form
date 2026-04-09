@@ -1,28 +1,23 @@
 {
+  "type": "default",
+  "id": "CICDPipelineStart",
   "executionPlatform": "Camunda Cloud",
-  "executionPlatformVersion": "8.4.0",
-  "exporter": {
-    "name": "Camunda Web Modeler",
-    "version": "8c03b57"
-  },
-  "schemaVersion": 16,
-  "id": "gitlabStartForm",
+  "executionPlatformVersion": "8.9.0",
+  "schemaVersion": 19,
   "components": [
     {
       "text": "You can start the blueprint by filling out this form.\nRefer to the [README file](https://github.com/camunda/camunda-platform-tutorials/blob/main/solutions/ci-cd/README.md) to learn more about how to use this blueprint.",
-      "label": "Text view",
       "type": "text",
       "layout": {
-        "row": "Row1",
+        "row": "Row_intro",
         "columns": null
       },
       "id": "gitlabStartFormIntroduction"
     },
     {
-      "label": "Separator",
       "type": "separator",
       "layout": {
-        "row": "Row2",
+        "row": "Row_separator",
         "columns": null
       },
       "id": "gitlabStartFormSeparator"
@@ -31,7 +26,7 @@
       "label": "Folder ID",
       "type": "textfield",
       "layout": {
-        "row": "Row3",
+        "row": "Row_folderId",
         "columns": null
       },
       "id": "inputFolderId",
@@ -45,7 +40,7 @@
       "label": "Target base branch",
       "type": "textfield",
       "layout": {
-        "row": "Row4",
+        "row": "Row_branch",
         "columns": null
       },
       "id": "fieldGitlabBranch",
@@ -59,7 +54,7 @@
       "label": "Target GitLab instance base URL",
       "type": "textfield",
       "layout": {
-        "row": "Row5",
+        "row": "Row_gitlabConfig",
         "columns": null
       },
       "id": "fieldGitlabBaseUrl",
@@ -70,7 +65,7 @@
       "label": "Target GitLab project id",
       "type": "textfield",
       "layout": {
-        "row": "Row5",
+        "row": "Row_gitlabConfig",
         "columns": null
       },
       "id": "fieldGitlabProjectId",
@@ -79,6 +74,5 @@
         "required": true
       }
     }
-  ],
-  "type": "default"
+  ]
 }

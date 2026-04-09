@@ -1,28 +1,23 @@
 {
+  "type": "default",
+  "id": "ManualQATesting",
   "executionPlatform": "Camunda Cloud",
-  "executionPlatformVersion": "8.4.0",
-  "exporter": {
-    "name": "Camunda Web Modeler",
-    "version": "8c03b57"
-  },
-  "schemaVersion": 16,
-  "id": "manualQaForm",
+  "executionPlatformVersion": "8.9.0",
+  "schemaVersion": 19,
   "components": [
     {
       "text": "This is an example of a user task for a manual QA test after deploying to the development stage and should be adapted to your individual use case.",
-      "label": "Text view",
       "type": "text",
       "layout": {
-        "row": "Row1",
+        "row": "Row_intro",
         "columns": null
       },
       "id": "manualQaFormIntroduction"
     },
     {
-      "label": "Separator",
       "type": "separator",
       "layout": {
-        "row": "Row2",
+        "row": "Row_separator",
         "columns": null
       },
       "id": "manualQaFormSeparator"
@@ -31,13 +26,12 @@
       "label": "QA successful",
       "type": "checkbox",
       "layout": {
-        "row": "Row3",
+        "row": "Row_qaResult",
         "columns": null
       },
       "id": "fieldQaSuccessfulCheck",
       "key": "qaSuccessfulCheck",
       "defaultValue": true
     }
-  ],
-  "type": "default"
+  ]
 }

@@ -19,7 +19,7 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 @SpringBootTest
 @CamundaSpringProcessTest
-@TestDeployment(resources = {"Expense Reimbursement.bpmn", "Form_ExpenseClaim.form", "Form_ExpenseClaimReview.form"})
+@TestDeployment(resources = {"Expense Reimbursement.bpmn", "CreateExpenseReport.form", "ReviewExpenseReport.form"})
 public class ProcessTest {
 
     @Autowired

@@ -48,7 +48,7 @@
     <bpmn:userTask id="AnswerInquireTask" name="Answer inquiry">
       <bpmn:extensionElements>
         <zeebe:userTask />
-        <zeebe:formDefinition formId="AnswerEnquiryForm" />
+        <zeebe:formDefinition formId="AnswerInquiry" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_14lnez5</bpmn:incoming>
       <bpmn:outgoing>Flow_0y68b2d</bpmn:outgoing>
@@ -94,7 +94,7 @@
     <bpmn:userTask id="LogReplyTask" name="Log reply">
       <bpmn:extensionElements>
         <zeebe:userTask />
-        <zeebe:formDefinition formId="LogReplyForm" />
+        <zeebe:formDefinition formId="LogReply" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1jz5jec</bpmn:incoming>
       <bpmn:outgoing>Flow_0vrum88</bpmn:outgoing>

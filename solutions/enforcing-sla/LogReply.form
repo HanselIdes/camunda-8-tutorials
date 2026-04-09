@@ -1,0 +1,49 @@
+{
+  "type": "default",
+  "id": "LogReply",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.9.0",
+  "schemaVersion": 19,
+  "components": [
+    {
+      "label": "Case Id",
+      "type": "textfield",
+      "id": "Field_0pqudld",
+      "key": "key",
+      "disabled": true,
+      "layout": {
+        "row": "Row_caseId"
+      }
+    },
+    {
+      "label": "Original Inquiry Text",
+      "type": "textfield",
+      "id": "Field_18pewaf",
+      "key": "inquiry",
+      "disabled": true,
+      "layout": {
+        "row": "Row_inquiry"
+      }
+    },
+    {
+      "label": "Response",
+      "type": "textfield",
+      "id": "Field_19kj6um",
+      "key": "answer",
+      "disabled": true,
+      "layout": {
+        "row": "Row_response"
+      }
+    },
+    {
+      "label": "Customer's Reply",
+      "type": "textfield",
+      "id": "Field_0tlpl5e",
+      "key": "reply",
+      "disabled": true,
+      "layout": {
+        "row": "Row_reply"
+      }
+    }
+  ]
+}

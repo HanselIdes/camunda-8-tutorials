@@ -1,0 +1,25 @@
+{
+  "type": "default",
+  "id": "AcknowledgeApprovalDecision",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.9.0",
+  "schemaVersion": 19,
+  "components": [
+    {
+      "text": "=\"This is a notification that your absence request has been \" + approvalResult + \" by your line manager \" + assignedLineManager + \".\"",
+      "type": "text",
+      "id": "Field_1imlq2e",
+      "layout": {
+        "row": "Row_notification"
+      }
+    },
+    {
+      "text": "You don't need to do anything here but completing the task.",
+      "type": "text",
+      "id": "Field_16eto3g",
+      "layout": {
+        "row": "Row_instruction"
+      }
+    }
+  ]
+}

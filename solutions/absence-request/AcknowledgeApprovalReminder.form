@@ -1,0 +1,25 @@
+{
+  "type": "default",
+  "id": "AcknowledgeApprovalReminder",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.9.0",
+  "schemaVersion": 19,
+  "components": [
+    {
+      "text": "=\"This is a reminder that the absence request from your employee \" + employeeName + \" is still pending and needs to be approved, clarified or rejected.\"",
+      "type": "text",
+      "id": "Field_0zkgcz1",
+      "layout": {
+        "row": "Row_reminder"
+      }
+    },
+    {
+      "text": "You don't need to do anything here but completing the task.",
+      "type": "text",
+      "id": "Field_1d5icpq",
+      "layout": {
+        "row": "Row_instruction"
+      }
+    }
+  ]
+}

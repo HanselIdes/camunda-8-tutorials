@@ -1,19 +1,15 @@
 {
+  "type": "default",
+  "id": "EnterInquiry",
   "executionPlatform": "Camunda Cloud",
-  "executionPlatformVersion": "8.4.0",
-  "exporter": {
-    "name": "Camunda Web Modeler",
-    "version": "4cd09b3"
-  },
-  "schemaVersion": 15,
-  "id": "Form_ogq5ow1",
+  "executionPlatformVersion": "8.9.0",
+  "schemaVersion": 19,
   "components": [
     {
       "text": "# Customer Inquiry",
-      "label": "Text view",
       "type": "text",
       "layout": {
-        "row": "Row_0yylpx9",
+        "row": "Row_title",
         "columns": null
       },
       "id": "Field_0i24v3q"
@@ -22,7 +18,7 @@
       "label": "Customer message",
       "type": "textarea",
       "layout": {
-        "row": "Row_16c54sz",
+        "row": "Row_message",
         "columns": null
       },
       "id": "Field_0wf2m58",
@@ -33,6 +29,5 @@
         "required": true
       }
     }
-  ],
-  "type": "default"
+  ]
 }

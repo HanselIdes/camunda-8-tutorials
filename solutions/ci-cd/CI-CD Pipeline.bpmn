@@ -8,7 +8,7 @@ For more information, read https://docs.camunda.io/docs/guides/devops-lifecycle/
     </bpmn:extensionElements>
     <bpmn:startEvent id="startCicd" name="CI/CD pipeline started">
       <bpmn:extensionElements>
-        <zeebe:formDefinition formId="gitlabStartForm" />
+        <zeebe:formDefinition formId="CICDPipelineStart" />
         <zeebe:properties>
           <zeebe:property name="publicAccess" value="true" />
         </zeebe:properties>
@@ -449,7 +449,7 @@ For more information, read https://docs.camunda.io/docs/guides/devops-lifecycle/
       <bpmn:userTask id="manualQaTest" name="Manual QA testing">
         <bpmn:extensionElements>
         <zeebe:userTask />
-          <zeebe:formDefinition formId="manualQaForm" />
+          <zeebe:formDefinition formId="ManualQATesting" />
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_00xavty</bpmn:incoming>
         <bpmn:outgoing>Flow_08g4fny</bpmn:outgoing>

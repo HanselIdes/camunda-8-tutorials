@@ -46,7 +46,7 @@
       <bpmn:extensionElements>
         <zeebe:userTask />
         <zeebe:assignmentDefinition candidateGroups="Finance" />
-        <zeebe:formDefinition formId="Form_ExpenseClaimReview" />
+        <zeebe:formDefinition formId="ReviewExpenseReport" />
         <zeebe:ioMapping>
           <zeebe:output source="=reviewOutcome" target="financeReviewOutcome" />
           <zeebe:output source="=if reviewOutcome = &#34;rejected&#34; then rejectionReason else &#34;&#34;" target="rejectionReason" />
@@ -81,7 +81,7 @@
       <bpmn:extensionElements>
         <zeebe:userTask />
         <zeebe:assignmentDefinition candidateGroups="Manager" candidateUsers="=[supervisorEmail]" />
-        <zeebe:formDefinition formId="Form_ExpenseClaimReview" />
+        <zeebe:formDefinition formId="ReviewExpenseReport" />
         <zeebe:ioMapping>
           <zeebe:output source="=reviewOutcome" target="managerReviewOutcome" />
           <zeebe:output source="=if reviewOutcome = &#34;rejected&#34; then rejectionReason else &#34;&#34;" target="rejectionReason" />
@@ -107,7 +107,7 @@
     <bpmn:userTask id="Activity_CreateExpenseReport" name="Create expense report">
       <bpmn:extensionElements>
         <zeebe:userTask />
-        <zeebe:formDefinition formId="Form_ExpenseClaim" />
+        <zeebe:formDefinition formId="CreateExpenseReport" />
         <zeebe:properties>
           <zeebe:property name="camundaModeler:exampleOutputJson" value="{&#10;  &#34;firstName&#34;: &#34;John&#34;,&#10;  &#34;lastName&#34;: &#34;Doe&#34;,&#10;  &#34;email&#34;: &#34;john.doe@camunda.com&#34;,&#10;  &#34;department&#34;: &#34;finance&#34;,&#10;  &#34;supervisorEmail&#34;: &#34;jane.doe@camunda.com&#34;,&#10;  &#34;expenseDate&#34;: &#34;2023-06-09&#34;,&#10;  &#34;expenseType&#34;: &#34;travel&#34;,&#10;  &#34;travelStart&#34;: &#34;2023-06-06&#34;,&#10;  &#34;travelEnd&#34;: &#34;2023-06-09&#34;,&#10;  &#34;travelLocation&#34;: &#34;Berlin&#34;,&#10;  &#34;expensePurpose&#34;: &#34;Travel to Berlin Office&#34;,&#10;  &#34;expenseAmount&#34;: 650&#10;}" />
         </zeebe:properties>

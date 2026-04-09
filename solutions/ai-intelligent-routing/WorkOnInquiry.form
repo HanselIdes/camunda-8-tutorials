@@ -1,19 +1,15 @@
 {
+  "type": "default",
+  "id": "WorkOnInquiry",
   "executionPlatform": "Camunda Cloud",
-  "executionPlatformVersion": "8.4.0",
-  "exporter": {
-    "name": "Camunda Web Modeler",
-    "version": "4cd09b3"
-  },
-  "schemaVersion": 15,
-  "id": "Form_hezkvru",
+  "executionPlatformVersion": "8.9.0",
+  "schemaVersion": 19,
   "components": [
     {
       "text": "# Customer Inquiry",
-      "label": "Text view",
       "type": "text",
       "layout": {
-        "row": "Row_0yylpx9",
+        "row": "Row_title",
         "columns": null
       },
       "id": "Field_0i24v3q"
@@ -22,7 +18,7 @@
       "label": "Customer message",
       "type": "textarea",
       "layout": {
-        "row": "Row_16c54sz",
+        "row": "Row_message",
         "columns": null
       },
       "id": "Field_0wf2m58",
@@ -35,41 +31,25 @@
     },
     {
       "text": "# Response",
-      "label": "Text view",
       "type": "text",
       "layout": {
-        "row": "Row_14nv3js",
+        "row": "Row_responseHeading",
         "columns": null
       },
       "id": "Field_1faoqh7"
     },
     {
       "values": [
-        {
-          "label": "Resolved",
-          "value": "resolved"
-        },
-        {
-          "label": "Retry with Feedback",
-          "value": "feedback"
-        },
-        {
-          "label": "Route to Engineering Team",
-          "value": "ENGINEERING_TEAM"
-        },
-        {
-          "label": "Route to Sales Team",
-          "value": "SALES_TEAM"
-        },
-        {
-          "label": "Route to Legal Team",
-          "value": "LEGAL_TEAM"
-        }
+        { "label": "Resolved", "value": "resolved" },
+        { "label": "Retry with Feedback", "value": "feedback" },
+        { "label": "Route to Engineering Team", "value": "ENGINEERING_TEAM" },
+        { "label": "Route to Sales Team", "value": "SALES_TEAM" },
+        { "label": "Route to Legal Team", "value": "LEGAL_TEAM" }
       ],
       "label": "Select",
       "type": "select",
       "layout": {
-        "row": "Row_1ys659x",
+        "row": "Row_routeSelect",
         "columns": null
       },
       "id": "Field_0w3wry0",
@@ -82,12 +62,11 @@
       "label": "Feedback",
       "type": "textarea",
       "layout": {
-        "row": "Row_0s54ysl",
+        "row": "Row_feedback",
         "columns": null
       },
       "id": "Field_13710np",
       "key": "feedback"
     }
-  ],
-  "type": "default"
+  ]
 }

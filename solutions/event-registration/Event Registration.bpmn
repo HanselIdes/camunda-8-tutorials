@@ -26,7 +26,7 @@
           <zeebe:output source="=additional_comments" target="additional_comments" />
           <zeebe:output source="=future_notifications" target="future_notifications" />
         </zeebe:ioMapping>
-        <zeebe:formDefinition formId="Form_EventRegistration" />
+        <zeebe:formDefinition formId="EventRegistration" />
       </bpmn:extensionElements>
       <bpmn:outgoing>Flow_15hhweo</bpmn:outgoing>
     </bpmn:startEvent>
