@@ -67,6 +67,7 @@
                 <directory>../</directory>
                 <includes>
                     <include>Enforcing SLA.bpmn</include>
+                    <include>*.form</include>
                 </includes>
             </testResource>
         </testResources>

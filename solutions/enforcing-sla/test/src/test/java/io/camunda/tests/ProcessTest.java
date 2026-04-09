@@ -19,7 +19,7 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 @SpringBootTest
 @CamundaSpringProcessTest
-@TestDeployment(resources = {"Enforcing SLA.bpmn"})
+@TestDeployment(resources = {"Enforcing SLA.bpmn", "AnswerEnquiryForm.form", "LogReplyForm.form"})
 public class ProcessTest {
 
     @Autowired

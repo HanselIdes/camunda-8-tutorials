@@ -2,416 +2,6 @@
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.45.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.8.0" camunda:diagramRelationId="3f4f46f7-e146-4fbe-91d6-cf2dac33a2a1">
   <bpmn:process id="Process_l1jbzht" name="Intelligent-routing-with-openai" isExecutable="true">
     <bpmn:extensionElements>
-      <zeebe:userTaskForm id="UserTaskForm_1jtqu5f">{
-  "executionPlatform": "Camunda Cloud",
-  "executionPlatformVersion": "8.4.0",
-  "exporter": {
-    "name": "Camunda Web Modeler",
-    "version": "4cd09b3"
-  },
-  "schemaVersion": 15,
-  "id": "Form_hezkvru",
-  "components": [
-    {
-      "text": "# Customer Inquiry",
-      "label": "Text view",
-      "type": "text",
-      "layout": {
-        "row": "Row_0yylpx9",
-        "columns": null
-      },
-      "id": "Field_0i24v3q"
-    },
-    {
-      "label": "Customer message",
-      "type": "textarea",
-      "layout": {
-        "row": "Row_16c54sz",
-        "columns": null
-      },
-      "id": "Field_0wf2m58",
-      "key": "customer_message",
-      "description": "Free text that the customer sent.",
-      "validate": {
-        "required": true
-      },
-      "readonly": true
-    },
-    {
-      "text": "# Response",
-      "label": "Text view",
-      "type": "text",
-      "layout": {
-        "row": "Row_14nv3js",
-        "columns": null
-      },
-      "id": "Field_1faoqh7"
-    },
-    {
-      "values": [
-        {
-          "label": "Resolved",
-          "value": "resolved"
-        },
-        {
-          "label": "Retry with Feedback",
-          "value": "feedback"
-        },
-        {
-          "label": "Route to Engineering Team",
-          "value": "ENGINEERING_TEAM"
-        },
-        {
-          "label": "Route to Sales Team",
-          "value": "SALES_TEAM"
-        },
-        {
-          "label": "Route to Legal Team",
-          "value": "LEGAL_TEAM"
-        }
-      ],
-      "label": "Select",
-      "type": "select",
-      "layout": {
-        "row": "Row_1ys659x",
-        "columns": null
-      },
-      "id": "Field_0w3wry0",
-      "key": "route",
-      "validate": {
-        "required": true
-      }
-    },
-    {
-      "label": "Feedback",
-      "type": "textarea",
-      "layout": {
-        "row": "Row_0s54ysl",
-        "columns": null
-      },
-      "id": "Field_13710np",
-      "key": "feedback"
-    }
-  ],
-  "type": "default"
-}</zeebe:userTaskForm>
-      <zeebe:userTaskForm id="UserTaskForm_2l872ik">{
-  "executionPlatform": "Camunda Cloud",
-  "executionPlatformVersion": "8.4.0",
-  "exporter": {
-    "name": "Camunda Web Modeler",
-    "version": "4cd09b3"
-  },
-  "schemaVersion": 15,
-  "id": "Form_hezkvru",
-  "components": [
-    {
-      "text": "# Customer Inquiry",
-      "label": "Text view",
-      "type": "text",
-      "layout": {
-        "row": "Row_0yylpx9",
-        "columns": null
-      },
-      "id": "Field_0i24v3q"
-    },
-    {
-      "label": "Customer message",
-      "type": "textarea",
-      "layout": {
-        "row": "Row_16c54sz",
-        "columns": null
-      },
-      "id": "Field_0wf2m58",
-      "key": "customer_message",
-      "description": "Free text that the customer sent.",
-      "validate": {
-        "required": true
-      },
-      "readonly": true
-    },
-    {
-      "text": "# Response",
-      "label": "Text view",
-      "type": "text",
-      "layout": {
-        "row": "Row_14nv3js",
-        "columns": null
-      },
-      "id": "Field_1faoqh7"
-    },
-    {
-      "values": [
-        {
-          "label": "Resolved",
-          "value": "resolved"
-        },
-        {
-          "label": "Retry with Feedback",
-          "value": "feedback"
-        },
-        {
-          "label": "Route to Engineering Team",
-          "value": "ENGINEERING_TEAM"
-        },
-        {
-          "label": "Route to Sales Team",
-          "value": "SALES_TEAM"
-        },
-        {
-          "label": "Route to Legal Team",
-          "value": "LEGAL_TEAM"
-        }
-      ],
-      "label": "Select",
-      "type": "select",
-      "layout": {
-        "row": "Row_1ys659x",
-        "columns": null
-      },
-      "id": "Field_0w3wry0",
-      "key": "route",
-      "validate": {
-        "required": true
-      }
-    },
-    {
-      "label": "Feedback",
-      "type": "textarea",
-      "layout": {
-        "row": "Row_0s54ysl",
-        "columns": null
-      },
-      "id": "Field_13710np",
-      "key": "feedback"
-    }
-  ],
-  "type": "default"
-}</zeebe:userTaskForm>
-      <zeebe:userTaskForm id="UserTaskForm_17jodni">{
-  "executionPlatform": "Camunda Cloud",
-  "executionPlatformVersion": "8.4.0",
-  "exporter": {
-    "name": "Camunda Web Modeler",
-    "version": "4cd09b3"
-  },
-  "schemaVersion": 15,
-  "id": "Form_hezkvru",
-  "components": [
-    {
-      "text": "# Customer Inquiry",
-      "label": "Text view",
-      "type": "text",
-      "layout": {
-        "row": "Row_0yylpx9",
-        "columns": null
-      },
-      "id": "Field_0i24v3q"
-    },
-    {
-      "label": "Customer message",
-      "type": "textarea",
-      "layout": {
-        "row": "Row_16c54sz",
-        "columns": null
-      },
-      "id": "Field_0wf2m58",
-      "key": "customer_message",
-      "description": "Free text that the customer sent.",
-      "validate": {
-        "required": true
-      },
-      "readonly": true
-    },
-    {
-      "text": "# Response",
-      "label": "Text view",
-      "type": "text",
-      "layout": {
-        "row": "Row_14nv3js",
-        "columns": null
-      },
-      "id": "Field_1faoqh7"
-    },
-    {
-      "values": [
-        {
-          "label": "Resolved",
-          "value": "resolved"
-        },
-        {
-          "label": "Retry with Feedback",
-          "value": "feedback"
-        },
-        {
-          "label": "Route to Engineering Team",
-          "value": "ENGINEERING_TEAM"
-        },
-        {
-          "label": "Route to Sales Team",
-          "value": "SALES_TEAM"
-        },
-        {
-          "label": "Route to Legal Team",
-          "value": "LEGAL_TEAM"
-        }
-      ],
-      "label": "Select",
-      "type": "select",
-      "layout": {
-        "row": "Row_1ys659x",
-        "columns": null
-      },
-      "id": "Field_0w3wry0",
-      "key": "route",
-      "validate": {
-        "required": true
-      }
-    },
-    {
-      "label": "Feedback",
-      "type": "textarea",
-      "layout": {
-        "row": "Row_0s54ysl",
-        "columns": null
-      },
-      "id": "Field_13710np",
-      "key": "feedback"
-    }
-  ],
-  "type": "default"
-}</zeebe:userTaskForm>
-      <zeebe:userTaskForm id="UserTaskForm_2o930gv">{
-  "executionPlatform": "Camunda Cloud",
-  "executionPlatformVersion": "8.4.0",
-  "exporter": {
-    "name": "Camunda Web Modeler",
-    "version": "4cd09b3"
-  },
-  "schemaVersion": 15,
-  "id": "Form_ogq5ow1",
-  "components": [
-    {
-      "text": "# Customer Inquiry",
-      "label": "Text view",
-      "type": "text",
-      "layout": {
-        "row": "Row_0yylpx9",
-        "columns": null
-      },
-      "id": "Field_0i24v3q"
-    },
-    {
-      "label": "Customer message",
-      "type": "textarea",
-      "layout": {
-        "row": "Row_16c54sz",
-        "columns": null
-      },
-      "id": "Field_0wf2m58",
-      "key": "customer_inquiry",
-      "description": "Free text that the customer sent.",
-      "defaultValue": "How many units do we have to purchase to receive a volume discount?",
-      "validate": {
-        "required": true
-      }
-    }
-  ],
-  "type": "default"
-}</zeebe:userTaskForm>
-      <zeebe:userTaskForm id="UserTaskForm_3kl77cq">{
-  "executionPlatform": "Camunda Cloud",
-  "executionPlatformVersion": "8.4.0",
-  "exporter": {
-    "name": "Camunda Web Modeler",
-    "version": "4cd09b3"
-  },
-  "schemaVersion": 15,
-  "id": "Form_hezkvru",
-  "components": [
-    {
-      "text": "# Customer Inquiry",
-      "label": "Text view",
-      "type": "text",
-      "layout": {
-        "row": "Row_0yylpx9",
-        "columns": null
-      },
-      "id": "Field_0i24v3q"
-    },
-    {
-      "label": "Customer message",
-      "type": "textarea",
-      "layout": {
-        "row": "Row_16c54sz",
-        "columns": null
-      },
-      "id": "Field_0wf2m58",
-      "key": "customer_message",
-      "description": "Free text that the customer sent.",
-      "validate": {
-        "required": true
-      },
-      "readonly": true
-    },
-    {
-      "text": "# Response",
-      "label": "Text view",
-      "type": "text",
-      "layout": {
-        "row": "Row_14nv3js",
-        "columns": null
-      },
-      "id": "Field_1faoqh7"
-    },
-    {
-      "values": [
-        {
-          "label": "Resolved",
-          "value": "resolved"
-        },
-        {
-          "label": "Retry with Feedback",
-          "value": "feedback"
-        },
-        {
-          "label": "Route to Engineering Team",
-          "value": "ENGINEERING_TEAM"
-        },
-        {
-          "label": "Route to Sales Team",
-          "value": "SALES_TEAM"
-        },
-        {
-          "label": "Route to Legal Team",
-          "value": "LEGAL_TEAM"
-        }
-      ],
-      "label": "Select",
-      "type": "select",
-      "layout": {
-        "row": "Row_1ys659x",
-        "columns": null
-      },
-      "id": "Field_0w3wry0",
-      "key": "route",
-      "validate": {
-        "required": true
-      }
-    },
-    {
-      "label": "Feedback",
-      "type": "textarea",
-      "layout": {
-        "row": "Row_0s54ysl",
-        "columns": null
-      },
-      "id": "Field_13710np",
-      "key": "feedback"
-    }
-  ],
-  "type": "default"
-}</zeebe:userTaskForm>
     </bpmn:extensionElements>
     <bpmn:startEvent id="StartEvent_1" name="Inquiry received">
       <bpmn:outgoing>Flow_0mqrso0</bpmn:outgoing>
@@ -462,7 +52,7 @@
         <zeebe:ioMapping>
           <zeebe:input source="=customer_inquiry" target="customer_message" />
         </zeebe:ioMapping>
-        <zeebe:formDefinition externalReference="UserTaskForm_1jtqu5f" />
+        <zeebe:formDefinition formId="Form_hezkvru" />
       </bpmn:extensionElements>
       <bpmn:incoming>flow_sales_inquiry</bpmn:incoming>
       <bpmn:outgoing>Flow_07h5nkp</bpmn:outgoing>
@@ -473,7 +63,7 @@
         <zeebe:ioMapping>
           <zeebe:input source="=customer_inquiry" target="customer_message" />
         </zeebe:ioMapping>
-        <zeebe:formDefinition externalReference="UserTaskForm_2l872ik" />
+        <zeebe:formDefinition formId="Form_hezkvru" />
       </bpmn:extensionElements>
       <bpmn:incoming>flow_technical_inquiry</bpmn:incoming>
       <bpmn:outgoing>Flow_088ove7</bpmn:outgoing>
@@ -491,7 +81,7 @@
         <zeebe:ioMapping>
           <zeebe:input source="=customer_inquiry" target="customer_message" />
         </zeebe:ioMapping>
-        <zeebe:formDefinition externalReference="UserTaskForm_17jodni" />
+        <zeebe:formDefinition formId="Form_hezkvru" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1gj1kgq</bpmn:incoming>
       <bpmn:outgoing>Flow_07c5po9</bpmn:outgoing>
@@ -516,7 +106,7 @@
     <bpmn:userTask id="Activity_03z512o" name="Enter inquiry (customer)">
       <bpmn:extensionElements>
         <zeebe:userTask />
-        <zeebe:formDefinition externalReference="UserTaskForm_2o930gv" />
+        <zeebe:formDefinition formId="Form_ogq5ow1" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0mqrso0</bpmn:incoming>
       <bpmn:outgoing>Flow_16ccfjo</bpmn:outgoing>
@@ -570,7 +160,7 @@
     <bpmn:userTask id="Activity_1ltiek0" name="Work on inquiry (default)">
       <bpmn:extensionElements>
         <zeebe:userTask />
-        <zeebe:formDefinition externalReference="UserTaskForm_3kl77cq" />
+        <zeebe:formDefinition formId="Form_hezkvru" />
         <zeebe:ioMapping>
           <zeebe:input source="=customer_inquiry" target="customer_message" />
         </zeebe:ioMapping>

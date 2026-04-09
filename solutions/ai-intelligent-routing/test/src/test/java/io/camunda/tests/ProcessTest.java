@@ -19,7 +19,7 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 @SpringBootTest
 @CamundaSpringProcessTest
-@TestDeployment(resources = {"Intelligent routing with Azure AI.bpmn"})
+@TestDeployment(resources = {"Intelligent routing with Azure AI.bpmn", "Form_hezkvru.form", "Form_ogq5ow1.form"})
 public class ProcessTest {
 
     @Autowired

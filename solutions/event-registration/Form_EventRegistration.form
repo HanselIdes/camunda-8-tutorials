@@ -1,0 +1,206 @@
+{
+   "components": [
+     {
+       "label": "Image view",
+       "type": "image",
+       "layout": {
+         "row": "Row_11u1oj3",
+         "columns": 3
+       },
+       "id": "Field_1gqy0xt",
+       "source": "https://camunda.com/wp-content/uploads/2023/01/coe-circle.svg"
+     },
+     {
+       "text": "##### About this Virtual Event\n\n**Topic:** Automation CoEs\n**Time:** 9:00 AM - 1:00 PM\n\n&lt;br&gt;\n\nIn this virtual event, we'll talk about success stories of automation CoEs. We'll discuss how did they get started, what are the needed tools, how much information or knowledge required to start, and many more.\n",
+       "label": "Text view",
+       "type": "text",
+       "layout": {
+         "row": "Row_11u1oj3",
+         "columns": null
+       },
+       "id": "Field_0v10mcc"
+     },
+     {
+       "text": "---\n\nComplete this quick form to let us know you're attending. It'll just take a minute.",
+       "label": "Text view",
+       "type": "text",
+       "layout": {
+         "row": "Row_1oap4ax",
+         "columns": null
+       },
+       "id": "Field_1dbdtw9"
+     },
+     {
+       "text": "##### Personal Information",
+       "type": "text",
+       "id": "Personal-info-subheading",
+       "layout": {
+         "row": "row_2",
+         "col": "auto"
+       }
+     },
+     {
+       "type": "textfield",
+       "id": "First-name-field",
+       "label": "First Name",
+       "key": "first_name",
+       "appearance": {
+         "fieldPrefix": "First Name: "
+       },
+       "validate": {
+         "required": false
+       },
+       "layout": {
+         "row": "row_3",
+         "col": "auto"
+       }
+     },
+     {
+       "type": "textfield",
+       "id": "Last-name-field",
+       "label": "Last Name",
+       "key": "last_name",
+       "appearance": {
+         "fieldPrefix": "Last Name: "
+       },
+       "validate": {
+         "required": false
+       },
+       "layout": {
+         "row": "row_3",
+         "col": "auto"
+       }
+     },
+     {
+       "type": "textfield",
+       "id": "Email-field",
+       "label": "Email",
+       "key": "email",
+       "appearance": {
+         "fieldPrefix": "Email: "
+       },
+       "validate": {
+         "required": true,
+         "email": true
+       },
+       "layout": {
+         "row": "row_4",
+         "col": "auto",
+         "columns": 8
+       },
+       "description": "Required for registration"
+     },
+     {
+       "label": "Phone number",
+       "type": "textfield",
+       "layout": {
+         "row": "row_4",
+         "columns": null
+       },
+       "id": "Field_1wuui84",
+       "key": "phone_number",
+       "description": "Can we get your phone number?",
+       "validate": {
+         "validationType": "phone"
+       }
+     },
+     {
+       "label": "Company",
+       "type": "textfield",
+       "layout": {
+         "row": "Row_0rtkl8d",
+         "columns": 8
+       },
+       "id": "Field_0c1xvpt",
+       "key": "company"
+     },
+     {
+       "text": "##### How did you hear about us?",
+       "type": "text",
+       "id": "Event-info-subheading",
+       "layout": {
+         "row": "row_5",
+         "col": "auto"
+       }
+     },
+     {
+       "values": [
+         {
+           "label": "Social Media",
+           "value": "social_media"
+         },
+         {
+           "label": "Google",
+           "value": "google"
+         },
+         {
+           "label": "Website",
+           "value": "website"
+         },
+         {
+           "label": "A Coworker",
+           "value": "coworker"
+         }
+       ],
+       "type": "checklist",
+       "layout": {
+         "row": "Row_1tj3vr8",
+         "columns": null
+       },
+       "id": "Field_13nmxan",
+       "key": "news_source"
+     },
+     {
+       "label": "Some other source",
+       "type": "textfield",
+       "layout": {
+         "row": "Row_1nt8oqi",
+         "columns": null
+       },
+       "id": "Field_0tjrny0",
+       "key": "news_source_alternative"
+     },
+     {
+       "text": "##### Additional Information",
+       "type": "text",
+       "id": "Additional-info-subheading",
+       "layout": {
+         "row": "row_9",
+         "col": "auto"
+       }
+     },
+     {
+       "type": "textarea",
+       "id": "Additional-comments-field",
+       "label": "Additional Comments",
+       "key": "additional_comments",
+       "validate": {
+         "maxLength": 500
+       },
+       "layout": {
+         "row": "row_10",
+         "col": "auto"
+       }
+     },
+     {
+       "type": "checkbox",
+       "id": "Future-notifications-checkbox",
+       "label": "Opt-in to receive future webinar notifications",
+       "key": "future_notifications",
+       "layout": {
+         "row": "row_11",
+         "col": "auto"
+       }
+     }
+   ],
+   "exporter": {
+     "name": "Camunda Web Modeler",
+     "version": "8aebd64"
+   },
+   "generated": true,
+   "type": "default",
+   "id": "Form_EventRegistration",
+   "executionPlatform": "Camunda Cloud",
+   "executionPlatformVersion": "8.2.0",
+   "schemaVersion": 9
+ }

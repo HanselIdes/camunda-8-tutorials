@@ -1,0 +1,38 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.4.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "4cd09b3"
+  },
+  "schemaVersion": 15,
+  "id": "Form_ogq5ow1",
+  "components": [
+    {
+      "text": "# Customer Inquiry",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0yylpx9",
+        "columns": null
+      },
+      "id": "Field_0i24v3q"
+    },
+    {
+      "label": "Customer message",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_16c54sz",
+        "columns": null
+      },
+      "id": "Field_0wf2m58",
+      "key": "customer_inquiry",
+      "description": "Free text that the customer sent.",
+      "defaultValue": "How many units do we have to purchase to receive a volume discount?",
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default"
+}

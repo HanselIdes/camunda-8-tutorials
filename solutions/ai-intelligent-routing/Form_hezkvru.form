@@ -1,0 +1,93 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.4.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "4cd09b3"
+  },
+  "schemaVersion": 15,
+  "id": "Form_hezkvru",
+  "components": [
+    {
+      "text": "# Customer Inquiry",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0yylpx9",
+        "columns": null
+      },
+      "id": "Field_0i24v3q"
+    },
+    {
+      "label": "Customer message",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_16c54sz",
+        "columns": null
+      },
+      "id": "Field_0wf2m58",
+      "key": "customer_message",
+      "description": "Free text that the customer sent.",
+      "validate": {
+        "required": true
+      },
+      "readonly": true
+    },
+    {
+      "text": "# Response",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_14nv3js",
+        "columns": null
+      },
+      "id": "Field_1faoqh7"
+    },
+    {
+      "values": [
+        {
+          "label": "Resolved",
+          "value": "resolved"
+        },
+        {
+          "label": "Retry with Feedback",
+          "value": "feedback"
+        },
+        {
+          "label": "Route to Engineering Team",
+          "value": "ENGINEERING_TEAM"
+        },
+        {
+          "label": "Route to Sales Team",
+          "value": "SALES_TEAM"
+        },
+        {
+          "label": "Route to Legal Team",
+          "value": "LEGAL_TEAM"
+        }
+      ],
+      "label": "Select",
+      "type": "select",
+      "layout": {
+        "row": "Row_1ys659x",
+        "columns": null
+      },
+      "id": "Field_0w3wry0",
+      "key": "route",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Feedback",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_0s54ysl",
+        "columns": null
+      },
+      "id": "Field_13710np",
+      "key": "feedback"
+    }
+  ],
+  "type": "default"
+}

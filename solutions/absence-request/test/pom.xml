@@ -67,6 +67,7 @@
                 <directory>../</directory>
                 <includes>
                     <include>Absence Request.bpmn</include>
+                    <include>*.form</include>
                 </includes>
             </testResource>
         </testResources>

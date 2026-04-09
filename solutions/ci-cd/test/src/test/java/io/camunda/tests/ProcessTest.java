@@ -19,7 +19,7 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 @SpringBootTest
 @CamundaSpringProcessTest
-@TestDeployment(resources = {"CI-CD Pipeline.bpmn"})
+@TestDeployment(resources = {"CI-CD Pipeline.bpmn", "gitlabStartForm.form", "manualQaForm.form"})
 public class ProcessTest {
 
     @Autowired

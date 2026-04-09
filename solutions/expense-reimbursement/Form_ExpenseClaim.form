@@ -1,7 +1,7 @@
 {
   "components": [
     {
-      "text": "# Expense Claim Review\n\nPlease review the following expense reimbursement claim, and either approve or reject it.",
+      "text": "# Expense Claim",
       "type": "text",
       "layout": {
         "row": "Row_0b02kr1",
@@ -10,7 +10,7 @@
       "id": "Field_1gbvbm7"
     },
     {
-      "text": "### Requester Information",
+      "text": "### Personal Information\n\nPlease provide your personal information to ensure proper assignment of the expense claim.",
       "type": "text",
       "layout": {
         "row": "Row_1ef2qla",
@@ -32,9 +32,7 @@
       "key": "firstName",
       "validate": {
         "required": false
-      },
-      "readonly": false,
-      "disabled": true
+      }
     },
     {
       "label": "Last name",
@@ -47,8 +45,7 @@
       "key": "lastName",
       "validate": {
         "required": false
-      },
-      "disabled": true
+      }
     },
     {
       "label": "Email",
@@ -64,9 +61,8 @@
       },
       "validate": {
         "validationType": "email",
-        "required": false
-      },
-      "disabled": true
+        "required": true
+      }
     },
     {
       "values": [
@@ -99,11 +95,35 @@
       },
       "id": "Field_07rt8k5",
       "key": "department",
-      "searchable": true,
-      "disabled": true
+      "searchable": true
     },
     {
-      "text": "### Expense Details",
+      "text": "### Supervisor\n\nPlease provide the email of your supervisor to review the expense.",
+      "type": "text",
+      "layout": {
+        "row": "Row_1ybnh5e",
+        "columns": null
+      },
+      "id": "Field_0kq8635"
+    },
+    {
+      "label": "Supervisor email",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0lcbkut",
+        "columns": 8
+      },
+      "id": "Field_05eprbr",
+      "key": "supervisorEmail",
+      "appearance": {
+        "prefixAdorner": "@"
+      },
+      "conditional": {
+        "hide": "=isReview"
+      }
+    },
+    {
+      "text": "## Expense Details",
       "type": "text",
       "layout": {
         "row": "Row_0jzv103",
@@ -123,9 +143,8 @@
       "id": "Field_0z4pwh0",
       "key": "expenseDate",
       "validate": {
-        "required": false
-      },
-      "disabled": true
+        "required": true
+      }
     },
     {
       "values": [
@@ -146,8 +165,7 @@
       },
       "id": "Field_1eiqop0",
       "key": "expenseType",
-      "searchable": true,
-      "disabled": true
+      "searchable": true
     },
     {
       "subtype": "date",
@@ -162,9 +180,8 @@
       "key": "travelStart",
       "conditional": {
         "hide": "=not(expenseType = \"travel\")"
-      },
-      "description": "Enter the start and end date of your travel",
-      "disabled": true
+},
+      "description": "Enter the start and end date of your travel"
     },
     {
       "subtype": "date",
@@ -179,8 +196,19 @@
       "key": "travelEnd",
       "conditional": {
         "hide": "=not(expenseType = \"travel\")"
+}
+    },
+    {
+      "text": "⚠️ The end date must be after the start date.",
+      "type": "text",
+      "layout": {
+        "row": "Row_1hua3bm",
+        "columns": null
       },
-      "disabled": true
+      "id": "Field_15j8ot1",
+      "conditional": {
+        "hide": "=travelEnd = null or not(after(travelStart, travelEnd))"
+      }
     },
     {
       "label": "Travel location",
@@ -192,12 +220,11 @@
       "id": "Field_1xz2kcy",
       "key": "travelLocation",
       "appearance": {
-        "prefixAdorner": "\ud83d\udccd"
+        "prefixAdorner": "📍"
       },
       "conditional": {
         "hide": "=not(expenseType = \"travel\")"
-      },
-      "disabled": true
+}
     },
     {
       "label": "Custom expense type",
@@ -210,8 +237,7 @@
       "key": "customExpenseType",
       "conditional": {
         "hide": "=not(expenseType = \"custom\")"
-      },
-      "disabled": true
+}
     },
     {
       "label": "Expense purpose",
@@ -225,8 +251,7 @@
       "validate": {
         "required": false
       },
-      "description": "Describe the purpose of your expense. A good description increases the likelihood of quick approval.",
-      "disabled": true
+      "description": "Describe the purpose of your expense. A good description increases the likelihood of quick approval."
     },
     {
       "label": "Expense amount",
@@ -241,75 +266,14 @@
         "prefixAdorner": "USD"
       },
       "validate": {
-        "required": false
+        "required": true
       },
       "decimalDigits": 2,
-      "increment": "0.5",
-      "disabled": true
-    },
-    {
-      "text": "---",
-      "label": "Text view",
-      "type": "text",
-      "layout": {
-        "row": "Row_1nymijp",
-        "columns": null
-      },
-      "id": "Field_19s421w"
-    },
-    {
-      "text": "### Approval",
-      "label": "Text view",
-      "type": "text",
-      "layout": {
-        "row": "Row_00khae6",
-        "columns": null
-      },
-      "id": "Field_1ptafde"
-    },
-    {
-      "values": [
-        {
-          "label": "I approve the expense claim.",
-          "value": "approved"
-        },
-        {
-          "label": "I reject the expense claim.",
-          "value": "rejected"
-        }
-      ],
-      "label": "Approval outcome",
-      "type": "radio",
-      "layout": {
-        "row": "Row_0nr03f7",
-        "columns": null
-      },
-      "id": "Field_0qcvtwe",
-      "key": "reviewOutcome",
-      "validate": {
-        "required": true
-      }
-    },
-    {
-      "label": "Rejection reason",
-      "type": "textarea",
-      "layout": {
-        "row": "Row_0ehktzg",
-        "columns": null
-      },
-      "id": "Field_1l1k9fd",
-      "key": "rejectionReason",
-      "conditional": {
-        "hide": "=not(reviewOutcome = \"rejected\")"
-      },
-      "description": "Provide a reason for rejecting this claim.",
-      "validate": {
-        "minLength": 10
-      }
+      "increment": "0.5"
     }
   ],
   "type": "default",
-  "id": "Form_ExpenseClaimReview",
+  "id": "Form_ExpenseClaim",
   "executionPlatform": "Camunda Cloud",
   "executionPlatformVersion": "8.2.0",
   "exporter": {

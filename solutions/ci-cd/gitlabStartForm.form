@@ -1,0 +1,84 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.4.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "8c03b57"
+  },
+  "schemaVersion": 16,
+  "id": "gitlabStartForm",
+  "components": [
+    {
+      "text": "You can start the blueprint by filling out this form.\nRefer to the [README file](https://github.com/camunda/camunda-platform-tutorials/blob/main/solutions/ci-cd/README.md) to learn more about how to use this blueprint.",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row1",
+        "columns": null
+      },
+      "id": "gitlabStartFormIntroduction"
+    },
+    {
+      "label": "Separator",
+      "type": "separator",
+      "layout": {
+        "row": "Row2",
+        "columns": null
+      },
+      "id": "gitlabStartFormSeparator"
+    },
+    {
+      "label": "Folder ID",
+      "type": "textfield",
+      "layout": {
+        "row": "Row3",
+        "columns": null
+      },
+      "id": "inputFolderId",
+      "key": "folderId",
+      "description": "Web Modeler ID of the folder to start the CI/CD pipeline for. All files within the root of the folder (i.e. not in subfolders) will be included in the pipeline.",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Target base branch",
+      "type": "textfield",
+      "layout": {
+        "row": "Row4",
+        "columns": null
+      },
+      "id": "fieldGitlabBranch",
+      "key": "gitlabBranch",
+      "validate": {
+        "required": true
+      },
+      "description": "Branch to open the merge request against."
+    },
+    {
+      "label": "Target GitLab instance base URL",
+      "type": "textfield",
+      "layout": {
+        "row": "Row5",
+        "columns": null
+      },
+      "id": "fieldGitlabBaseUrl",
+      "key": "gitlabBaseUrl",
+      "defaultValue": "https://gitlab.com"
+    },
+    {
+      "label": "Target GitLab project id",
+      "type": "textfield",
+      "layout": {
+        "row": "Row5",
+        "columns": null
+      },
+      "id": "fieldGitlabProjectId",
+      "key": "gitlabProjectId",
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default"
+}
