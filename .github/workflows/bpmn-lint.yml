@@ -56,9 +56,6 @@ jobs:
             exit 1
           fi
 
-      - name: Run bpmnlint (changed files only — informational)
+      - name: Run bpmnlint (changed files only)
         if: steps.changed.outputs.files != ''
-        # Violations are reported but do not block merges.
-        # Pre-existing issues in legacy files are tech debt tracked separately.
-        # XML well-formedness (above) is the hard gate.
-        run: npx bpmnlint --config .bpmnlintrc ${{ steps.changed.outputs.files }} || true
+        run: npx bpmnlint --config .bpmnlintrc ${{ steps.changed.outputs.files }}

@@ -1,9 +1,13 @@
 {
   "extends": [
     "bpmnlint:recommended",
-    "plugin:camunda-compat/camunda-cloud-8-6"
+    "plugin:camunda-compat/camunda-cloud-8-8"
   ],
   "rules": {
-    "no-bpmndi": "off"
+    "no-inclusive-gateway": "off",
+    "no-implicit-end": "warn"
+  },
+  "moddleExtensions": {
+    "zeebe": "zeebe-bpmn-moddle/resources/zeebe.json"
   }
 }

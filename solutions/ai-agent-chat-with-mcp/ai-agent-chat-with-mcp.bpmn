@@ -91,7 +91,7 @@
           </zeebe:properties>
         </bpmn:extensionElements>
       </bpmn:serviceTask>
-      <bpmn:intermediateThrowEvent id="Filesystem_MCP_Flow">
+      <bpmn:intermediateThrowEvent id="Filesystem_MCP_Flow" name="Filesystem MCP Flow">
         <bpmn:extensionElements>
           <zeebe:properties>
             <zeebe:property name="io.camunda.agenticai.gateway.type" value="mcpClient" />
@@ -222,12 +222,17 @@ else
             <zeebe:script expression="=&#34;Updated message from event: &#34; + messageFromEvent" resultVariable="toolCallResult" />
           </bpmn:extensionElements>
           <bpmn:incoming>Flow_0kd4go1</bpmn:incoming>
+          <bpmn:outgoing>Flow_Handle_Message_To_End</bpmn:outgoing>
         </bpmn:scriptTask>
-        <bpmn:startEvent id="On_Message" isInterrupting="false">
+        <bpmn:startEvent id="On_Message" name="On Message" isInterrupting="false">
           <bpmn:outgoing>Flow_0kd4go1</bpmn:outgoing>
           <bpmn:messageEventDefinition id="MessageEventDefinition_0l1ft5s" messageRef="Message_3mpc025" />
         </bpmn:startEvent>
         <bpmn:sequenceFlow id="Flow_0kd4go1" sourceRef="On_Message" targetRef="Handle_Message" />
+        <bpmn:endEvent id="End_Event_Sub_Process_mcp" name="End">
+          <bpmn:incoming>Flow_Handle_Message_To_End</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:sequenceFlow id="Flow_Handle_Message_To_End" sourceRef="Handle_Message" targetRef="End_Event_Sub_Process_mcp" />
       </bpmn:subProcess>
     </bpmn:adHocSubProcess>
     <bpmn:sequenceFlow id="Flow_0kp0klg" sourceRef="Gateway_0z6ctwk" targetRef="AI_Agent" />
@@ -280,6 +285,9 @@ else
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_19s4fqs_di" bpmnElement="Filesystem_MCP_Flow">
         <dc:Bounds x="387" y="412" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="360" y="455" width="90" height="27" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_04601bs_di" bpmnElement="Filesystem">
         <dc:Bounds x="560" y="390" width="100" height="80" />
@@ -318,7 +326,7 @@ else
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0ixs5a4_di" bpmnElement="Event_Sub_Process" isExpanded="true">
-        <dc:Bounds x="385" y="790" width="350" height="130" />
+        <dc:Bounds x="385" y="790" width="420" height="130" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0bsqv5x_di" bpmnElement="Handle_Message">
         <dc:Bounds x="610" y="810" width="100" height="80" />
@@ -326,10 +334,20 @@ else
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_031hxyb_di" bpmnElement="On_Message">
         <dc:Bounds x="412" y="832" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="393" y="875" width="74" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0kd4go1_di" bpmnElement="Flow_0kd4go1">
         <di:waypoint x="448" y="850" />
         <di:waypoint x="610" y="850" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="End_Event_Sub_Process_mcp_di" bpmnElement="End_Event_Sub_Process_mcp">
+        <dc:Bounds x="752" y="832" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_Handle_Message_To_End_di" bpmnElement="Flow_Handle_Message_To_End">
+        <di:waypoint x="710" y="850" />
+        <di:waypoint x="752" y="850" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_085l1z3_di" bpmnElement="Flow_085l1z3">
         <di:waypoint x="423" y="430" />
@@ -409,6 +427,13 @@ else
       <bpmndi:BPMNEdge id="Association_03owhkm_di" bpmnElement="Association_03owhkm">
         <di:waypoint x="520" y="713" />
         <di:waypoint x="590" y="713" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_mcp_intro_di" bpmnElement="TextAnnotation_mcp_intro">
+        <dc:Bounds x="90" y="100" width="290" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_mcp_intro_di" bpmnElement="Association_mcp_intro">
+        <di:waypoint x="170" y="192" />
+        <di:waypoint x="170" y="155" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

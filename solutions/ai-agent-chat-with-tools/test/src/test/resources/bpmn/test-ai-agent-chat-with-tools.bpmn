@@ -13,7 +13,7 @@
       <bpmn:outgoing>Flow_Gateway_FetchURL</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_Start_Gateway" sourceRef="Start" targetRef="Gateway_SelectTool" />
-    <bpmn:sequenceFlow id="Flow_Gateway_ListUsers" sourceRef="Gateway_SelectTool" targetRef="ListUsers">
+    <bpmn:sequenceFlow id="Flow_Gateway_ListUsers" name="List Users" sourceRef="Gateway_SelectTool" targetRef="ListUsers">
       <bpmn:conditionExpression>=connectorTest = "ListUsers"</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:serviceTask id="ListUsers" name="List Users">
@@ -35,11 +35,11 @@
       <bpmn:incoming>Flow_Gateway_ListUsers</bpmn:incoming>
       <bpmn:outgoing>Flow_ListUsers_End</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:endEvent id="End_ListUsers">
+    <bpmn:endEvent id="End_ListUsers" name="List Users">
       <bpmn:incoming>Flow_ListUsers_End</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_ListUsers_End" sourceRef="ListUsers" targetRef="End_ListUsers" />
-    <bpmn:sequenceFlow id="Flow_Gateway_LoadUserByID" sourceRef="Gateway_SelectTool" targetRef="LoadUserByID">
+    <bpmn:sequenceFlow id="Flow_Gateway_LoadUserByID" name="Load User By ID" sourceRef="Gateway_SelectTool" targetRef="LoadUserByID">
       <bpmn:conditionExpression>=connectorTest = "LoadUserByID"</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:serviceTask id="LoadUserByID" name="Load User By ID">
@@ -61,11 +61,11 @@
       <bpmn:incoming>Flow_Gateway_LoadUserByID</bpmn:incoming>
       <bpmn:outgoing>Flow_LoadUserByID_End</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:endEvent id="End_LoadUserByID">
+    <bpmn:endEvent id="End_LoadUserByID" name="Load User By ID">
       <bpmn:incoming>Flow_LoadUserByID_End</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_LoadUserByID_End" sourceRef="LoadUserByID" targetRef="End_LoadUserByID" />
-    <bpmn:sequenceFlow id="Flow_Gateway_SearchRecipe" sourceRef="Gateway_SelectTool" targetRef="Search_Recipe">
+    <bpmn:sequenceFlow id="Flow_Gateway_SearchRecipe" name="Search Recipe" sourceRef="Gateway_SelectTool" targetRef="Search_Recipe">
       <bpmn:conditionExpression>=connectorTest = "Search_Recipe"</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:serviceTask id="Search_Recipe" name="Search Recipe">
@@ -88,11 +88,11 @@
       <bpmn:incoming>Flow_Gateway_SearchRecipe</bpmn:incoming>
       <bpmn:outgoing>Flow_SearchRecipe_End</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:endEvent id="End_SearchRecipe">
+    <bpmn:endEvent id="End_SearchRecipe" name="Search Recipe">
       <bpmn:incoming>Flow_SearchRecipe_End</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_SearchRecipe_End" sourceRef="Search_Recipe" targetRef="End_SearchRecipe" />
-    <bpmn:sequenceFlow id="Flow_Gateway_JokesAPI" sourceRef="Gateway_SelectTool" targetRef="Jokes_API">
+    <bpmn:sequenceFlow id="Flow_Gateway_JokesAPI" name="Jokes API" sourceRef="Gateway_SelectTool" targetRef="Jokes_API">
       <bpmn:conditionExpression>=connectorTest = "Jokes_API"</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:serviceTask id="Jokes_API" name="Jokes API">
@@ -114,11 +114,11 @@
       <bpmn:incoming>Flow_Gateway_JokesAPI</bpmn:incoming>
       <bpmn:outgoing>Flow_JokesAPI_End</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:endEvent id="End_JokesAPI">
+    <bpmn:endEvent id="End_JokesAPI" name="Jokes API">
       <bpmn:incoming>Flow_JokesAPI_End</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_JokesAPI_End" sourceRef="Jokes_API" targetRef="End_JokesAPI" />
-    <bpmn:sequenceFlow id="Flow_Gateway_FetchURL" sourceRef="Gateway_SelectTool" targetRef="Fetch_URL">
+    <bpmn:sequenceFlow id="Flow_Gateway_FetchURL" name="Fetch URL" sourceRef="Gateway_SelectTool" targetRef="Fetch_URL">
       <bpmn:conditionExpression>=connectorTest = "Fetch_URL"</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:serviceTask id="Fetch_URL" name="Fetch URL">
@@ -140,7 +140,7 @@
       <bpmn:incoming>Flow_Gateway_FetchURL</bpmn:incoming>
       <bpmn:outgoing>Flow_FetchURL_End</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:endEvent id="End_FetchURL">
+    <bpmn:endEvent id="End_FetchURL" name="Fetch URL">
       <bpmn:incoming>Flow_FetchURL_End</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_FetchURL_End" sourceRef="Fetch_URL" targetRef="End_FetchURL" />
@@ -175,30 +175,45 @@ Run: env $(cat ../.env | grep -v '^#' | xargs) mvn clean test -P integration-tes
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="End_ListUsers_di" bpmnElement="End_ListUsers">
         <dc:Bounds x="652" y="62" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="629" y="105" width="82" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="LoadUserByID_di" bpmnElement="LoadUserByID">
         <dc:Bounds x="500" y="160" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="End_LoadUserByID_di" bpmnElement="End_LoadUserByID">
         <dc:Bounds x="652" y="182" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="621" y="225" width="98" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Search_Recipe_di" bpmnElement="Search_Recipe">
         <dc:Bounds x="500" y="280" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="End_SearchRecipe_di" bpmnElement="End_SearchRecipe">
         <dc:Bounds x="652" y="302" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="625" y="345" width="90" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Jokes_API_di" bpmnElement="Jokes_API">
         <dc:Bounds x="500" y="400" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="End_JokesAPI_di" bpmnElement="End_JokesAPI">
         <dc:Bounds x="652" y="422" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="629" y="465" width="82" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Fetch_URL_di" bpmnElement="Fetch_URL">
         <dc:Bounds x="500" y="520" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="End_FetchURL_di" bpmnElement="End_FetchURL">
         <dc:Bounds x="652" y="542" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="629" y="585" width="82" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Association_1qhql2b_di" bpmnElement="Association_1qhql2b">
         <di:waypoint x="282" y="304" />
@@ -216,25 +231,40 @@ Run: env $(cat ../.env | grep -v '^#' | xargs) mvn clean test -P integration-tes
         <di:waypoint x="395" y="295" />
         <di:waypoint x="395" y="80" />
         <di:waypoint x="500" y="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="414" y="173" width="52" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_Gateway_LoadUserByID_di" bpmnElement="Flow_Gateway_LoadUserByID">
         <di:waypoint x="395" y="295" />
         <di:waypoint x="395" y="200" />
         <di:waypoint x="500" y="200" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="414" y="241" width="82" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_Gateway_SearchRecipe_di" bpmnElement="Flow_Gateway_SearchRecipe">
         <di:waypoint x="420" y="320" />
         <di:waypoint x="500" y="320" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="432" y="303" width="68" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_Gateway_JokesAPI_di" bpmnElement="Flow_Gateway_JokesAPI">
         <di:waypoint x="395" y="345" />
         <di:waypoint x="395" y="440" />
         <di:waypoint x="500" y="440" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="414" y="386" width="52" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_Gateway_FetchURL_di" bpmnElement="Flow_Gateway_FetchURL">
         <di:waypoint x="395" y="345" />
         <di:waypoint x="395" y="560" />
         <di:waypoint x="500" y="560" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="414" y="446" width="52" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_ListUsers_End_di" bpmnElement="Flow_ListUsers_End">
         <di:waypoint x="600" y="80" />

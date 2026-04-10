@@ -363,6 +363,13 @@
         <di:waypoint x="950" y="130" />
         <di:waypoint x="985" y="130" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_openai_routing_intro_di" bpmnElement="TextAnnotation_openai_routing_intro">
+        <dc:Bounds x="150" y="20" width="290" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_openai_routing_intro_di" bpmnElement="Association_openai_routing_intro">
+        <di:waypoint x="230" y="112" />
+        <di:waypoint x="230" y="75" />
+      </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

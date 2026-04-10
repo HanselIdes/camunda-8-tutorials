@@ -240,12 +240,17 @@
             <zeebe:script expression="=&#34;Updated message from event: &#34; + messageFromEvent" resultVariable="toolCallResult" />
           </bpmn:extensionElements>
           <bpmn:incoming>Flow_0kd4go1</bpmn:incoming>
+          <bpmn:outgoing>Flow_Handle_Message_To_End_tools</bpmn:outgoing>
         </bpmn:scriptTask>
         <bpmn:sequenceFlow id="Flow_0kd4go1" sourceRef="On_Message" targetRef="Handle_Message" />
-        <bpmn:startEvent id="On_Message" isInterrupting="false">
+        <bpmn:startEvent id="On_Message" name="On Message" isInterrupting="false">
           <bpmn:outgoing>Flow_0kd4go1</bpmn:outgoing>
           <bpmn:messageEventDefinition id="MessageEventDefinition_0l1ft5s" messageRef="Message_3mpc025" />
         </bpmn:startEvent>
+        <bpmn:endEvent id="End_Event_Sub_Process_tools" name="End">
+          <bpmn:incoming>Flow_Handle_Message_To_End_tools</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:sequenceFlow id="Flow_Handle_Message_To_End_tools" sourceRef="Handle_Message" targetRef="End_Event_Sub_Process_tools" />
       </bpmn:subProcess>
       <bpmn:association id="Association_1l46554" associationDirection="None" sourceRef="GetDateAndTime" targetRef="TextAnnotation_01jo4ud" />
     </bpmn:adHocSubProcess>
@@ -353,7 +358,7 @@
         <di:waypoint x="880" y="348" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Activity_0ixs5a4_di" bpmnElement="Event_Sub_Process" isExpanded="true">
-        <dc:Bounds x="374" y="730" width="350" height="130" />
+        <dc:Bounds x="374" y="730" width="420" height="130" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0bsqv5x_di" bpmnElement="Handle_Message" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
         <dc:Bounds x="499" y="750" width="100" height="80" />
@@ -361,10 +366,20 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_031hxyb_di" bpmnElement="On_Message" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
         <dc:Bounds x="401" y="772" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="382" y="815" width="74" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0kd4go1_di" bpmnElement="Flow_0kd4go1">
         <di:waypoint x="437" y="790" />
         <di:waypoint x="499" y="790" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="End_Event_Sub_Process_tools_di" bpmnElement="End_Event_Sub_Process_tools">
+        <dc:Bounds x="641" y="772" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_Handle_Message_To_End_tools_di" bpmnElement="Flow_Handle_Message_To_End_tools">
+        <di:waypoint x="599" y="790" />
+        <di:waypoint x="641" y="790" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0demz1g_di" bpmnElement="Flow_0demz1g">
         <di:waypoint x="484" y="550" />
@@ -439,6 +454,13 @@
       <bpmndi:BPMNEdge id="Flow_0m7etfk_di" bpmnElement="Flow_0m7etfk">
         <di:waypoint x="859" y="200" />
         <di:waypoint x="910" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_tools_intro_di" bpmnElement="TextAnnotation_tools_intro">
+        <dc:Bounds x="90" y="90" width="290" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_tools_intro_di" bpmnElement="Association_tools_intro">
+        <di:waypoint x="170" y="182" />
+        <di:waypoint x="170" y="145" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

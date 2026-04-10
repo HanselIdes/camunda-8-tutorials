@@ -550,6 +550,13 @@
         <di:waypoint x="650" y="170" />
         <di:waypoint x="650" y="140" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_loan_origination_intro_di" bpmnElement="TextAnnotation_loan_origination_intro">
+        <dc:Bounds x="170" y="230" width="290" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_loan_origination_intro_di" bpmnElement="Association_loan_origination_intro">
+        <di:waypoint x="250" y="322" />
+        <di:waypoint x="250" y="285" />
+      </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
   <bpmndi:BPMNDiagram id="BPMNDiagram_0h2934k">

@@ -915,6 +915,13 @@
         <di:waypoint x="1730" y="380" />
         <di:waypoint x="1730" y="700" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_car_rental_intro_di" bpmnElement="TextAnnotation_car_rental_intro">
+        <dc:Bounds x="190" y="230" width="290" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_car_rental_intro_di" bpmnElement="Association_car_rental_intro">
+        <di:waypoint x="270" y="322" />
+        <di:waypoint x="270" y="285" />
+      </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1bjbj8r">

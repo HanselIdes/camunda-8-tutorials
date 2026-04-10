@@ -25,7 +25,7 @@
   </bpmn:collaboration>
   <bpmn:process id="telco_service_order_fulfillment_retail" isExecutable="true">
     <bpmn:laneSet id="LaneSet_0kfpsbm">
-      <bpmn:lane id="Lane_1wct3t6">
+      <bpmn:lane id="Lane_1wct3t6" name="Order Fulfillment">
         <bpmn:flowNodeRef>Event_047t2hg</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_1iq0f31</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0it8p82</bpmn:flowNodeRef>
@@ -778,6 +778,13 @@
       <bpmndi:BPMNEdge id="Flow_12xztmz_di" bpmnElement="Flow_12xztmz">
         <di:waypoint x="1260" y="380" />
         <di:waypoint x="1260" y="910" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_telco_intro_di" bpmnElement="TextAnnotation_telco_intro">
+        <dc:Bounds x="170" y="230" width="290" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_telco_intro_di" bpmnElement="Association_telco_intro">
+        <di:waypoint x="250" y="322" />
+        <di:waypoint x="250" y="285" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

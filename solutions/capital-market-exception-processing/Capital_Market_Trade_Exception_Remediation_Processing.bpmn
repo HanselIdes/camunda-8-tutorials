@@ -568,6 +568,13 @@
           <dc:Bounds x="1239" y="802" width="41" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_capital_market_intro_di" bpmnElement="TextAnnotation_capital_market_intro">
+        <dc:Bounds x="270" y="120" width="290" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_capital_market_intro_di" bpmnElement="Association_capital_market_intro">
+        <di:waypoint x="350" y="212" />
+        <di:waypoint x="350" y="175" />
+      </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
   <bpmndi:BPMNDiagram id="BPMNDiagram_00jpjw7">
