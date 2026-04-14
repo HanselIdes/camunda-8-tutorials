@@ -47,6 +47,13 @@
         <di:waypoint x="340" y="100" />
         <di:waypoint x="392" y="100" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_tutorial_ms_di" bpmnElement="TextAnnotation_tutorial_ms">
+        <dc:Bounds x="142" y="2" width="200" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_tutorial_ms_di" bpmnElement="Association_tutorial_ms">
+        <di:waypoint x="170" y="82" />
+        <di:waypoint x="242" y="82" />
+      </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

@@ -191,10 +191,15 @@
         <bpmn:outgoing>Flow_1mudddl</bpmn:outgoing>
         <bpmn:outgoing>Flow_0lexqwn</bpmn:outgoing>
       </bpmn:exclusiveGateway>
-      <bpmn:intermediateThrowEvent id="Event_1wd6fel" name="Specialist answered">
+      <bpmn:exclusiveGateway id="Gateway_join_wd6fel" name="" gatewayDirection="Converging">
         <bpmn:incoming>Flow_0j63wm9</bpmn:incoming>
         <bpmn:incoming>Flow_0lexqwn</bpmn:incoming>
+        <bpmn:outgoing>Flow_join_to_wd6fel</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:intermediateThrowEvent id="Event_1wd6fel" name="Specialist answered">
+        <bpmn:incoming>Flow_join_to_wd6fel</bpmn:incoming>
       </bpmn:intermediateThrowEvent>
+      <bpmn:sequenceFlow id="Flow_join_to_wd6fel" sourceRef="Gateway_join_wd6fel" targetRef="Event_1wd6fel" />
       <bpmn:exclusiveGateway id="Gateway_1g2difp" name="Who keeps control?">
         <bpmn:incoming>Flow_1aaxb1w</bpmn:incoming>
         <bpmn:outgoing>Flow_0acq6om</bpmn:outgoing>
@@ -202,7 +207,7 @@
       </bpmn:exclusiveGateway>
       <bpmn:intermediateThrowEvent id="Event_0xzg3s4" name="Human control required">
         <bpmn:incoming>Flow_0q6oul9</bpmn:incoming>
-        <bpmn:escalationEventDefinition id="EscalationEventDefinition_1h6o509" escalationRef="Escalation_1x4421v" />
+        <bpmn:escalationEventDefinition id="EscalationEventDefinition_1h6o509" escalationRef="Escalation_1qaovql" />
       </bpmn:intermediateThrowEvent>
       <bpmn:intermediateThrowEvent id="Event_0jmzwhr" name="Response correlated">
         <bpmn:extensionElements>
@@ -214,7 +219,7 @@
       </bpmn:intermediateThrowEvent>
       <bpmn:boundaryEvent id="Event_1wezv96" name="knowledge base empty" attachedToRef="query_knowledge_base">
         <bpmn:outgoing>Flow_0d4itte</bpmn:outgoing>
-        <bpmn:errorEventDefinition id="ErrorEventDefinition_07papr1" errorRef="Error_04dhtpa" />
+        <bpmn:errorEventDefinition id="ErrorEventDefinition_07papr1" errorRef="Error_1xmh0a2" />
       </bpmn:boundaryEvent>
       <bpmn:sequenceFlow id="Flow_0yjq5t1" sourceRef="Reply_with_email_to_customer" targetRef="Event_WaitForResponse" />
       <bpmn:sequenceFlow id="Flow_11xrx39" sourceRef="Event_WaitForResponse" targetRef="Event_0jmzwhr" />
@@ -304,7 +309,7 @@
     <bpmn:subProcess id="Activity_0sw5ued" name="Human controlled request" triggeredByEvent="true">
       <bpmn:startEvent id="Event_1daac7o" name="Human control required">
         <bpmn:outgoing>Flow_1sjth1d</bpmn:outgoing>
-        <bpmn:escalationEventDefinition id="EscalationEventDefinition_0hx6e2i" escalationRef="Escalation_1fpfwz8" />
+        <bpmn:escalationEventDefinition id="EscalationEventDefinition_0hx6e2i" escalationRef="Escalation_1qaovql" />
       </bpmn:startEvent>
       <bpmn:userTask id="Activity_0pyk6oo" name="Handle customer request">
         <bpmn:extensionElements>
@@ -349,10 +354,10 @@
       <bpmn:outgoing>Flow_0a79ens</bpmn:outgoing>
       <bpmn:outgoing>Flow_0fh19mp</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:intermediateThrowEvent id="Event_1jfz6dk" name="Human control required">
+    <bpmn:endEvent id="Event_1jfz6dk" name="Human control required">
       <bpmn:incoming>Flow_0a79ens</bpmn:incoming>
       <bpmn:escalationEventDefinition id="EscalationEventDefinition_06njmsk" escalationRef="Escalation_1qaovql" />
-    </bpmn:intermediateThrowEvent>
+    </bpmn:endEvent>
     <bpmn:serviceTask id="Activity_0hp732o" name="Agent as a Judge" zeebe:modelerTemplate="io.camunda.connectors.agenticai.aiagent.v1" zeebe:modelerTemplateVersion="4" zeebe:modelerTemplateIcon="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTYiIGZpbGw9IiNBNTZFRkYiLz4KPG1hc2sgaWQ9InBhdGgtMi1vdXRzaWRlLTFfMTg1XzYiIG1hc2tVbml0cz0idXNlclNwYWNlT25Vc2UiIHg9IjQiIHk9IjQiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgZmlsbD0iYmxhY2siPgo8cmVjdCBmaWxsPSJ3aGl0ZSIgeD0iNCIgeT0iNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ii8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMjAuMDEwNSAxMi4wOTg3QzE4LjQ5IDEwLjU4OTQgMTcuMTU5NCA4LjEwODE0IDE2LjE3OTkgNi4wMTEwM0MxNi4xNTIgNi4wMDQ1MSAxNi4xMTc2IDYgMTYuMDc5NCA2QzE2LjA0MTEgNiAxNi4wMDY2IDYuMDA0NTEgMTUuOTc4OCA2LjAxMTA0QzE0Ljk5OTQgOC4xMDgxNCAxMy42Njk3IDEwLjU4ODkgMTIuMTQ4MSAxMi4wOTgxQzEwLjYyNjkgMTMuNjA3MSA4LjEyNTY4IDE0LjkyNjQgNi4wMTE1NyAxNS44OTgxQzYuMDA0NzQgMTUuOTI2MSA2IDE1Ljk2MTEgNiAxNkM2IDE2LjAzODcgNi4wMDQ2OCAxNi4wNzM2IDYuMDExNDQgMTYuMTAxNEM4LjEyNTE5IDE3LjA3MjkgMTAuNjI2MiAxOC4zOTE5IDEyLjE0NzcgMTkuOTAxNkMxMy42Njk3IDIxLjQxMDcgMTQuOTk5NiAyMy44OTIgMTUuOTc5MSAyNS45ODlDMTYuMDA2OCAyNS45OTU2IDE2LjA0MTEgMjYgMTYuMDc5MyAyNkMxNi4xMTc1IDI2IDE2LjE1MTkgMjUuOTk1NCAxNi4xNzk2IDI1Ljk4OUMxNy4xNTkxIDIzLjg5MiAxOC40ODg4IDIxLjQxMSAyMC4wMDk5IDE5LjkwMjFNMjAuMDA5OSAxOS45MDIxQzIxLjUyNTMgMTguMzk4NyAyMy45NDY1IDE3LjA2NjkgMjUuOTkxNSAxNi4wODI0QzI1Ljk5NjUgMTYuMDU5MyAyNiAxNi4wMzEgMjYgMTUuOTk5N0MyNiAxNS45Njg0IDI1Ljk5NjUgMTUuOTQwMyAyNS45OTE1IDE1LjkxNzFDMjMuOTQ3NCAxNC45MzI3IDIxLjUyNTkgMTMuNjAxIDIwLjAxMDUgMTIuMDk4NyIvPgo8L21hc2s+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMjAuMDEwNSAxMi4wOTg3QzE4LjQ5IDEwLjU4OTQgMTcuMTU5NCA4LjEwODE0IDE2LjE3OTkgNi4wMTEwM0MxNi4xNTIgNi4wMDQ1MSAxNi4xMTc2IDYgMTYuMDc5NCA2QzE2LjA0MTEgNiAxNi4wMDY2IDYuMDA0NTEgMTUuOTc4OCA2LjAxMTA0QzE0Ljk5OTQgOC4xMDgxNCAxMy42Njk3IDEwLjU4ODkgMTIuMTQ4MSAxMi4wOTgxQzEwLjYyNjkgMTMuNjA3MSA4LjEyNTY4IDE0LjkyNjQgNi4wMTE1NyAxNS44OTgxQzYuMDA0NzQgMTUuOTI2MSA2IDE1Ljk2MTEgNiAxNkM2IDE2LjAzODcgNi4wMDQ2OCAxNi4wNzM2IDYuMDExNDQgMTYuMTAxNEM4LjEyNTE5IDE3LjA3MjkgMTAuNjI2MiAxOC4zOTE5IDEyLjE0NzcgMTkuOTAxNkMxMy42Njk3IDIxLjQxMDcgMTQuOTk5NiAyMy44OTIgMTUuOTc5MSAyNS45ODlDMTYuMDA2OCAyNS45OTU2IDE2LjA0MTEgMjYgMTYuMDc5MyAyNkMxNi4xMTc1IDI2IDE2LjE1MTkgMjUuOTk1NCAxNi4xNzk2IDI1Ljk4OUMxNy4xNTkxIDIzLjg5MiAxOC40ODg4IDIxLjQxMSAyMC4wMDk5IDE5LjkwMjFNMjAuMDA5OSAxOS45MDIxQzIxLjUyNTMgMTguMzk4NyAyMy45NDY1IDE3LjA2NjkgMjUuOTkxNSAxNi4wODI0QzI1Ljk5NjUgMTYuMDU5MyAyNiAxNi4wMzEgMjYgMTUuOTk5N0MyNiAxNS45Njg0IDI1Ljk5NjUgMTUuOTQwMyAyNS45OTE1IDE1LjkxNzFDMjMuOTQ3NCAxNC45MzI3IDIxLjUyNTkgMTMuNjAxIDIwLjAxMDUgMTIuMDk4NyIgZmlsbD0id2hpdGUiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yMC4wMTA1IDEyLjA5ODdDMTguNDkgMTAuNTg5NCAxNy4xNTk0IDguMTA4MTQgMTYuMTc5OSA2LjAxMTAzQzE2LjE1MiA2LjAwNDUxIDE2LjExNzYgNiAxNi4wNzk0IDZDMTYuMDQxMSA2IDE2LjAwNjYgNi4wMDQ1MSAxNS45Nzg4IDYuMDExMDRDMTQuOTk5NCA4LjEwODE0IDEzLjY2OTcgMTAuNTg4OSAxMi4xNDgxIDEyLjA5ODFDMTAuNjI2OSAxMy42MDcxIDguMTI1NjggMTQuOTI2NCA2LjAxMTU3IDE1Ljg5ODFDNi4wMDQ3NCAxNS45MjYxIDYgMTUuOTYxMSA2IDE2QzYgMTYuMDM4NyA2LjAwNDY4IDE2LjA3MzYgNi4wMTE0NCAxNi4xMDE0QzguMTI1MTkgMTcuMDcyOSAxMC42MjYyIDE4LjM5MTkgMTIuMTQ3NyAxOS45MDE2QzEzLjY2OTcgMjEuNDEwNyAxNC45OTk2IDIzLjg5MiAxNS45NzkxIDI1Ljk4OUMxNi4wMDY4IDI1Ljk5NTYgMTYuMDQxMSAyNiAxNi4wNzkzIDI2QzE2LjExNzUgMjYgMTYuMTUxOSAyNS45OTU0IDE2LjE3OTYgMjUuOTg5QzE3LjE1OTEgMjMuODkyIDE4LjQ4ODggMjEuNDExIDIwLjAwOTkgMTkuOTAyMU0yMC4wMDk5IDE5LjkwMjFDMjEuNTI1MyAxOC4zOTg3IDIzLjk0NjUgMTcuMDY2OSAyNS45OTE1IDE2LjA4MjRDMjUuOTk2NSAxNi4wNTkzIDI2IDE2LjAzMSAyNiAxNS45OTk3QzI2IDE1Ljk2ODQgMjUuOTk2NSAxNS45NDAzIDI1Ljk5MTUgMTUuOTE3MUMyMy45NDc0IDE0LjkzMjcgMjEuNTI1OSAxMy42MDEgMjAuMDEwNSAxMi4wOTg3IiBzdHJva2U9IiM0OTFEOEIiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgbWFzaz0idXJsKCNwYXRoLTItb3V0c2lkZS0xXzE4NV82KSIvPgo8L3N2Zz4K">
       <bpmn:extensionElements>
         <zeebe:taskDefinition type="io.camunda.agenticai:aiagent:1" retries="3" />
@@ -512,9 +517,6 @@
       <zeebe:subscription correlationKey="=ourReplyEmail.messageId" />
     </bpmn:extensionElements>
   </bpmn:message>
-  <bpmn:escalation id="Escalation_1x4421v" name="human escalation" escalationCode="100_human_escalation" />
-  <bpmn:escalation id="Escalation_1fpfwz8" name="human escalation" escalationCode="100_human_escalation" />
-  <bpmn:error id="Error_04dhtpa" name="index_not_found" errorCode="index_not_found" />
   <bpmn:message id="Message_0whm78z" name="3c562193-4e24-4d28-8407-3f6079e80f0e" zeebe:modelerTemplate="io.camunda.connectors.inbound.EmailMessageStart.v1" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0j5qzil">
@@ -525,7 +527,7 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0icwfki_di" bpmnElement="Activity_04glkkx" isExpanded="true">
-        <dc:Bounds x="548" y="85" width="759" height="410" />
+        <dc:Bounds x="548" y="85" width="839" height="410" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0pn4ems_di" bpmnElement="Reply_with_email_to_customer" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
@@ -561,10 +563,13 @@
           <dc:Bounds x="952" y="260" width="82" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_join_wd6fel_di" bpmnElement="Gateway_join_wd6fel" isMarkerVisible="true">
+        <dc:Bounds x="1215" y="290" width="50" height="50" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1wd6fel_di" bpmnElement="Event_1wd6fel">
-        <dc:Bounds x="1245" y="297" width="36" height="36" />
+        <dc:Bounds x="1322" y="297" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1239" y="260" width="48" height="27" />
+          <dc:Bounds x="1316" y="260" width="48" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_0x6ayre" bpmnElement="Gateway_1g2difp" isMarkerVisible="true">
@@ -612,7 +617,11 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0j63wm9_di" bpmnElement="Flow_0j63wm9">
         <di:waypoint x="1193" y="315" />
-        <di:waypoint x="1245" y="315" />
+        <di:waypoint x="1215" y="315" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_join_to_wd6fel_di" bpmnElement="Flow_join_to_wd6fel">
+        <di:waypoint x="1265" y="315" />
+        <di:waypoint x="1322" y="315" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0d4itte_di" bpmnElement="Flow_0d4itte">
         <di:waypoint x="1201" y="200" />
@@ -628,8 +637,8 @@
       <bpmndi:BPMNEdge id="Flow_0lexqwn_di" bpmnElement="Flow_0lexqwn">
         <di:waypoint x="993" y="340" />
         <di:waypoint x="993" y="395" />
-        <di:waypoint x="1263" y="395" />
-        <di:waypoint x="1263" y="333" />
+        <di:waypoint x="1240" y="395" />
+        <di:waypoint x="1240" y="340" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="1016" y="358" width="13" height="14" />
         </bpmndi:BPMNLabel>

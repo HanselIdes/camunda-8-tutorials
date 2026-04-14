@@ -418,9 +418,9 @@
         <dc:Bounds x="665" y="185" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1fr1ftj_di" bpmnElement="Event_1fr1ftj">
-        <dc:Bounds x="562" y="192" width="36" height="36" />
+        <dc:Bounds x="535" y="192" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="535" y="235" width="90" height="14" />
+          <dc:Bounds x="508" y="235" width="90" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="BPMNEdge_1lmtnv5" bpmnElement="Flow_17aidmd">
@@ -472,7 +472,7 @@
         <di:waypoint x="752" y="450" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1mqad0z_di" bpmnElement="Flow_1mqad0z">
-        <di:waypoint x="598" y="210" />
+        <di:waypoint x="571" y="210" />
         <di:waypoint x="585" y="210" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_0us0wja" bpmnElement="Flow_1tyl6gu">

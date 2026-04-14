@@ -13,6 +13,7 @@
     <bpmn:userTask id="Auto_assigned_by_task_listener_on_creating_event" name="Assigned by creating task listener">
       <bpmn:extensionElements>
         <zeebe:userTask />
+        <zeebe:formDefinition formId="task-listener-form" />
         <zeebe:taskListeners>
           <zeebe:taskListener eventType="creating" type="assign_new_task" />
         </zeebe:taskListeners>
