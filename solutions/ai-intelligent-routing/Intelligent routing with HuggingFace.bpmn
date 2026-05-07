@@ -38,6 +38,7 @@
     </bpmn:exclusiveGateway>
     <bpmn:userTask id="activity_sales_team" name="Work on inquiry (Sales team)">
       <bpmn:extensionElements>
+        <zeebe:userTask />
         <zeebe:ioMapping>
           <zeebe:input source="=customer_inquiry" target="customer_message" />
         </zeebe:ioMapping>
@@ -48,6 +49,7 @@
     </bpmn:userTask>
     <bpmn:userTask id="activity_engineering_team" name="Work on inquiry (Engineering team)">
       <bpmn:extensionElements>
+        <zeebe:userTask />
         <zeebe:ioMapping>
           <zeebe:input source="=customer_inquiry" target="customer_message" />
         </zeebe:ioMapping>
@@ -65,6 +67,7 @@
     </bpmn:exclusiveGateway>
     <bpmn:userTask id="Activity_04j3j7a" name="Work on inquiry (Legal team)">
       <bpmn:extensionElements>
+        <zeebe:userTask />
         <zeebe:ioMapping>
           <zeebe:input source="=customer_inquiry" target="customer_message" />
         </zeebe:ioMapping>
@@ -92,6 +95,7 @@
     <bpmn:sequenceFlow id="Flow_07c5po9" sourceRef="Activity_04j3j7a" targetRef="gateway_sales_team" />
     <bpmn:userTask id="Activity_03z512o" name="Enter inquiry (customer)">
       <bpmn:extensionElements>
+        <zeebe:userTask />
         <zeebe:formDefinition formId="EnterInquiry" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0mqrso0</bpmn:incoming>
@@ -145,6 +149,7 @@
     <bpmn:sequenceFlow id="Flow_13kjm3t" sourceRef="Activity_1ltiek0" targetRef="gateway_sales_team" />
     <bpmn:userTask id="Activity_1ltiek0" name="Work on inquiry (default)">
       <bpmn:extensionElements>
+        <zeebe:userTask />
         <zeebe:formDefinition formId="WorkOnInquiry" />
         <zeebe:ioMapping>
           <zeebe:input source="=customer_inquiry" target="customer_message" />
@@ -350,6 +355,13 @@
       <bpmndi:BPMNEdge id="Flow_13kjm3t_di" bpmnElement="Flow_13kjm3t">
         <di:waypoint x="950" y="130" />
         <di:waypoint x="985" y="130" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_hf_routing_intro_di" bpmnElement="TextAnnotation_hf_routing_intro">
+        <dc:Bounds x="162" y="22" width="300" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_hf_routing_intro_di" bpmnElement="Association_hf_routing_intro">
+        <di:waypoint x="212" y="112" />
+        <di:waypoint x="312" y="92" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

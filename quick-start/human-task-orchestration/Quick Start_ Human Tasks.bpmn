@@ -40,6 +40,7 @@
     <bpmn:userTask id="prepare-chicken" name="Prepare chicken">
       <bpmn:extensionElements>
         <zeebe:userTask />
+        <zeebe:formDefinition formId="prepare-chicken" />
       </bpmn:extensionElements>
       <bpmn:incoming>chicken-path</bpmn:incoming>
       <bpmn:outgoing>chicken-prepared</bpmn:outgoing>
@@ -47,6 +48,7 @@
     <bpmn:userTask id="prepare-salad" name="Prepare salad">
       <bpmn:extensionElements>
         <zeebe:userTask />
+        <zeebe:formDefinition formId="prepare-salad" />
       </bpmn:extensionElements>
       <bpmn:incoming>salad-path</bpmn:incoming>
       <bpmn:outgoing>salad-prepared</bpmn:outgoing>
@@ -126,6 +128,13 @@
         <di:waypoint x="620" y="270" />
         <di:waypoint x="680" y="270" />
         <di:waypoint x="680" y="175" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_tutorial_ht_di" bpmnElement="TextAnnotation_tutorial_ht">
+        <dc:Bounds x="182" y="32" width="200" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_tutorial_ht_di" bpmnElement="Association_tutorial_ht">
+        <di:waypoint x="210" y="132" />
+        <di:waypoint x="282" y="112" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

@@ -368,7 +368,6 @@
     <bpmn:association id="Association_telco_intro" associationDirection="None" sourceRef="Event_047t2hg" targetRef="TextAnnotation_telco_intro" />
   </bpmn:process>
   <bpmn:error id="Error_0cbsxer" name="fraud found" errorCode="fraud_found" />
-  <bpmn:signal id="Signal_0m4udet" name="inventory_updated" />
   <bpmn:message id="Message_277isu3" name="resource_activation_completed">
     <bpmn:extensionElements>
       <zeebe:subscription correlationKey="=string(orderId) + &#34;_&#34; + string(mobileOrder.orderItemId)" />
