@@ -1,0 +1,13 @@
+{
+  "name": "vehicle-risk-assessment-worker",
+  "version": "1.0.0",
+  "description": "Zeebe job worker for io.camunda.demo:vehicle-risk-assessment. Parses NHTSA vehicle data and computes a risk score.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "zeebe-node": "^8.8.0",
+    "dotenv": "^16.0.0"
+  }
+}

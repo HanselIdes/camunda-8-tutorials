@@ -1,0 +1,12 @@
+camunda:
+  process-test:
+    # Reuse one embedded Zeebe container per test class.
+    runtime-mode: shared
+
+logging:
+  level:
+    root: warn
+    io.camunda.process.test: info
+    io.camunda.demo: info
+    org.testcontainers: warn
+    tc: error
