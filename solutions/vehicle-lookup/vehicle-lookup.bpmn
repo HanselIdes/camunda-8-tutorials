@@ -23,6 +23,11 @@
     <bpmn:serviceTask id="RiskAssessment" name="Assess vehicle risk">
       <bpmn:extensionElements>
         <zeebe:taskDefinition type="io.camunda.demo:vehicle-risk-assessment" retries="3" />
+        <zeebe:ioMapping>
+          <zeebe:output source="vehicleInfo" target="vehicleInfo" />
+          <zeebe:output source="riskScore" target="riskScore" />
+          <zeebe:output source="eligible" target="eligible" />
+        </zeebe:ioMapping>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_NHTSAToRisk</bpmn:incoming>
       <bpmn:outgoing>Flow_RiskToGateway</bpmn:outgoing>
