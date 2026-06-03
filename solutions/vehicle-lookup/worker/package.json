@@ -8,6 +8,6 @@
   },
   "dependencies": {
     "dotenv": "^16.0.0",
-    "zeebe-node": "^8.7.0"
+    "zeebe-node": "^8.3.2"
   }
 }
