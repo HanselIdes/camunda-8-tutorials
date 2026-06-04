@@ -50,12 +50,12 @@ async function poll() {
       riskScore -= 15;
     }
 
-    const eligible = riskScore <= 40;
+    const isEligible = riskScore <= 40;
 
-    console.log(`${make} ${model} ${year} | type=${vehicleType} | score=${riskScore} | eligible=${eligible}`);
+    console.log(`${make} ${model} ${year} | type=${vehicleType} | score=${riskScore} | isEligible=${isEligible}`);
 
     await request('POST', `/v2/jobs/${job.jobKey}/completion`, {
-      variables: { eligible, riskScore },
+      variables: { isEligible, riskScore },
     });
   }
 }
