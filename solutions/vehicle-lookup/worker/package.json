@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@camunda8/sdk": "^8.9.0-alpha.7"
+  }
+}
