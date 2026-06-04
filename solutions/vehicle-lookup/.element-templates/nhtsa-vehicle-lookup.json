@@ -24,10 +24,6 @@
       "label": "HTTP endpoint"
     },
     {
-      "id": "timeout",
-      "label": "Connect timeout"
-    },
-    {
       "id": "output",
       "label": "Response mapping"
     },
@@ -78,50 +74,29 @@
           "value": "^(=|(https?://|secrets\\..+|\\{\\{secrets\\..+\\}\\}).*$)",
           "message": "Must be a http(s) URL"
         }
-      }
+      },
+      "editable": false
     },
     {
-      "label": "Query parameters",
-      "description": "Optional map of query parameters to add to the request URL.",
-      "group": "endpoint",
-      "type": "Text",
-      "feel": "required",
+      "type": "Hidden",
       "binding": {
         "type": "zeebe:input",
         "name": "queryParameters"
-      },
-      "optional": true
+      }
     },
     {
-      "label": "HTTP headers",
-      "description": "Optional map of HTTP headers to add to the request.",
-      "group": "endpoint",
-      "type": "Text",
-      "feel": "required",
+      "type": "Hidden",
       "binding": {
         "type": "zeebe:input",
         "name": "headers"
-      },
-      "optional": true
+      }
     },
     {
-      "label": "Connection timeout",
-      "description": "Timeout in seconds to establish a connection (0 = infinite).",
-      "group": "timeout",
-      "type": "String",
+      "type": "Hidden",
       "value": "20",
-      "feel": "optional",
-      "optional": true,
       "binding": {
         "type": "zeebe:input",
         "name": "connectionTimeoutInSeconds"
-      },
-      "constraints": {
-        "notEmpty": false,
-        "pattern": {
-          "value": "^(=|([0-9]+|secrets\\..+|\\{\\{secrets\\..+\\}\\})$)",
-          "message": "Must be a timeout in seconds (default 20) or a FEEL expression"
-        }
       }
     },
     {
@@ -133,7 +108,8 @@
       "binding": {
         "type": "zeebe:taskHeader",
         "key": "resultVariable"
-      }
+      },
+      "editable": false
     },
     {
       "label": "Result expression",
