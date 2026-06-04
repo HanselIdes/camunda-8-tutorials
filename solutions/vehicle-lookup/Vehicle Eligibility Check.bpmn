@@ -51,10 +51,17 @@
       <bpmn:incoming>Flow_0a1b2c3</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_0a1b2c3" sourceRef="Activity_1x2y3z4" targetRef="Event_0d1e2f3" />
-    <bpmn:task id="Activity_1c9x8wj" name="Calculate Eligibility">
+    <bpmn:serviceTask id="Activity_1c9x8wj" name="Calculate Eligibility">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda.demo:calculate-eligibility" retries="3" />
+        <zeebe:ioMapping>
+          <zeebe:output source="isEligible" target="isEligible" />
+          <zeebe:output source="riskScore" target="riskScore" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_0y1b7qj</bpmn:incoming>
       <bpmn:outgoing>Flow_1q0c5z2</bpmn:outgoing>
-    </bpmn:task>
+    </bpmn:serviceTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_vehicle-lookup">
     <bpmndi:BPMNPlane id="BPMNPlane_vehicle-lookup" bpmnElement="vehicle-eligibility-check">
