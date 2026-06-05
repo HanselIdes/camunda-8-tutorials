@@ -3,7 +3,7 @@
   "testCases": [
     {
       "name": "Eligible vehicle routes to eligible end event",
-      "description": "2023 Honda Civic (PASSENGER CAR) — 2022+, passenger type, expect eligible path with risk score 5",
+      "description": "2023 Honda Civic (PASSENGER CAR) — 2022+, passenger type, expect eligible path",
       "instructions": [
         {
           "type": "CREATE_PROCESS_INSTANCE",
@@ -12,7 +12,7 @@
         },
         {
           "type": "COMPLETE_JOB",
-          "jobSelector": { "elementId": "Activity_0k1w3q7" },
+          "jobSelector": { "elementId": "Activity_0k5j4qf" },
           "variables": {
             "year": 2023,
             "make": "HONDA",
@@ -22,19 +22,23 @@
         },
         {
           "type": "COMPLETE_JOB",
-          "jobSelector": { "elementId": "Activity_1c9x8wj" },
-          "variables": {}
+          "jobSelector": { "elementId": "Activity_1c9i2y3" },
+          "variables": {
+            "riskScore": 5,
+            "eligible": true
+          }
         },
         {
           "type": "ASSERT_ELEMENT_INSTANCES",
-          "elementInstanceSelector": { "elementId": "Event_1m2n3o4" },
-          "expectedCount": 1
+          "processInstanceSelector": { "processDefinitionId": "vehicle-eligibility-check" },
+          "elementSelectors": [{ "elementId": "Event_1n4k3h2" }],
+          "state": "IS_COMPLETED"
         }
       ]
     },
     {
       "name": "Ineligible vehicle routes to ineligible end event",
-      "description": "2015 Ford F-150 (TRUCK) — pre-2018, non-passenger type, expect ineligible path with risk score 50",
+      "description": "2015 Ford F-150 (TRUCK) — pre-2018, non-passenger type, expect ineligible path",
       "instructions": [
         {
           "type": "CREATE_PROCESS_INSTANCE",
@@ -43,7 +47,7 @@
         },
         {
           "type": "COMPLETE_JOB",
-          "jobSelector": { "elementId": "Activity_0k1w3q7" },
+          "jobSelector": { "elementId": "Activity_0k5j4qf" },
           "variables": {
             "year": 2015,
             "make": "FORD",
@@ -53,13 +57,17 @@
         },
         {
           "type": "COMPLETE_JOB",
-          "jobSelector": { "elementId": "Activity_1c9x8wj" },
-          "variables": {}
+          "jobSelector": { "elementId": "Activity_1c9i2y3" },
+          "variables": {
+            "riskScore": 50,
+            "eligible": false
+          }
         },
         {
           "type": "ASSERT_ELEMENT_INSTANCES",
-          "elementInstanceSelector": { "elementId": "Event_0d1e2f3" },
-          "expectedCount": 1
+          "processInstanceSelector": { "processDefinitionId": "vehicle-eligibility-check" },
+          "elementSelectors": [{ "elementId": "Event_0f8w2e1" }],
+          "state": "IS_COMPLETED"
         }
       ]
     }
