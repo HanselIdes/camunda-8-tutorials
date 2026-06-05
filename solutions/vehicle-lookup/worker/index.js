@@ -1,6 +1,6 @@
 // Intentionally buggy worker for demo Act 2 reset state.
-// Uses vehicleScore (wrong variable name) so CI fails on variable schema check.
-// 03-act2-fix.sh renames vehicleScore → riskScore to make CI pass.
+// Uses riskScore (wrong variable name) so CI fails on variable schema check.
+// 03-act2-fix.sh renames riskScore → riskScore to make CI pass.
 const http = require('http');
 const BASE_URL = 'http://localhost:8080';
 const AUTH = 'Basic ' + Buffer.from('demo:demo').toString('base64');
@@ -37,13 +37,13 @@ async function poll() {
     const make = get('Make'), model = get('Model');
     const year = get('Model Year'), vehicleType = get('Vehicle Type');
     const vehicleInfo = { make, model, year, vehicleType };
-    let vehicleScore = 50;
-    if (['PASSENGER CAR', 'MULTIPURPOSE PASSENGER VEHICLE (MPV)'].includes(vehicleType)) vehicleScore -= 20;
-    if (parseInt(year, 10) >= 2018) vehicleScore -= 15;
-    const eligible = vehicleScore <= 40;
-    console.log(`${make} ${model} ${year} | score=${vehicleScore} eligible=${eligible}`);
+    let riskScore = 50;
+    if (['PASSENGER CAR', 'MULTIPURPOSE PASSENGER VEHICLE (MPV)'].includes(vehicleType)) riskScore -= 20;
+    if (parseInt(year, 10) >= 2018) riskScore -= 15;
+    const eligible = riskScore <= 40;
+    console.log(`${make} ${model} ${year} | score=${riskScore} eligible=${eligible}`);
     await request('POST', `/v2/jobs/${job.jobKey}/completion`, {
-      variables: { vehicleInfo, vehicleScore, eligible },
+      variables: { vehicleInfo, riskScore, eligible },
     });
   }
 }
