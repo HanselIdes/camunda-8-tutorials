@@ -17,8 +17,8 @@
           <zeebe:input source="20" target="connectionTimeoutInSeconds" />
         </zeebe:ioMapping>
         <zeebe:taskHeaders>
-          <zeebe:header key="resultVariable" value="response" />
-          <zeebe:header key="resultExpression" value="={&#10;   &#34;make&#34;: response.body.Results[Variable=&#34;Make&#34;][1].Value,&#10;   &#34;model&#34;: response.body.Results[Variable=&#34;Model&#34;][1].Value,&#10;   &#34;year&#34;: number(response.body.Results[Variable=&#34;Model Year&#34;][1].Value),&#10;   &#34;vehicle type&#34;: response.body.Results[Variable=&#34;Vehicle Type&#34;][1].Value&#10;}" />
+          <zeebe:header key="resultVariable" value="vehicleApiResponse" />
+          <zeebe:header key="resultExpression" value="={&#10;   &#34;make&#34;: vehicleApiResponse.body.Results[Variable=&#34;Make&#34;][1].Value,&#10;   &#34;model&#34;: vehicleApiResponse.body.Results[Variable=&#34;Model&#34;][1].Value,&#10;   &#34;year&#34;: number(vehicleApiResponse.body.Results[Variable=&#34;Model Year&#34;][1].Value),&#10;   &#34;vehicle type&#34;: vehicleApiResponse.body.Results[Variable=&#34;Vehicle Type&#34;][1].Value&#10;}" />
         </zeebe:taskHeaders>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1u5ktjv</bpmn:incoming>
@@ -32,7 +32,7 @@
       <bpmn:outgoing>Flow_0n3g4h5</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_1a8b7c6" name="Yes" sourceRef="Gateway_1o0w8qf" targetRef="Activity_0f9d8e7">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=isEligible</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=eligible</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:task id="Activity_0f9d8e7" name="Add to Promo List">
       <bpmn:incoming>Flow_1a8b7c6</bpmn:incoming>
@@ -51,10 +51,16 @@
       <bpmn:incoming>Flow_0a1b2c3</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_0a1b2c3" sourceRef="Activity_1x2y3z4" targetRef="Event_0d1e2f3" />
-    <bpmn:task id="Activity_1c9x8wj" name="Calculate Eligibility">
+    <bpmn:serviceTask id="Activity_1c9x8wj" name="Calculate Eligibility">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda.demo:vehicle-risk-assessment" />
+        <zeebe:ioMapping>
+          <zeebe:output source="=vehicleScore" target="vehicleScore" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_0y1b7qj</bpmn:incoming>
       <bpmn:outgoing>Flow_1q0c5z2</bpmn:outgoing>
-    </bpmn:task>
+    </bpmn:serviceTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_vehicle-lookup">
     <bpmndi:BPMNPlane id="BPMNPlane_vehicle-lookup" bpmnElement="vehicle-eligibility-check">
