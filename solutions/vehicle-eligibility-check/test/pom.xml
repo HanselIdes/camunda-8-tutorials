@@ -64,7 +64,7 @@
                 <directory>src/test/resources</directory>
             </testResource>
             <testResource>
-                <directory>../</directory>
+                <directory>../src/main/resources</directory>
                 <includes>
                     <include>Vehicle Eligibility Check.bpmn</include>
                     <include>vehicle-eligibility.dmn</include>
