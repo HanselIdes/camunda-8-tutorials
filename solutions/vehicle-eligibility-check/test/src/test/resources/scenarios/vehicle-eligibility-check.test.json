@@ -25,7 +25,7 @@
         {
           "type": "ASSERT_ELEMENT_INSTANCES",
           "processInstanceSelector": { "processDefinitionId": "vehicle-eligibility-check" },
-          "elementSelectors": [{ "elementId": "Event_0o6s5p3" }],
+          "elementSelectors": [{ "elementId": "Event_Eligible" }],
           "state": "IS_COMPLETED"
         }
       ]
@@ -54,7 +54,7 @@
         {
           "type": "ASSERT_ELEMENT_INSTANCES",
           "processInstanceSelector": { "processDefinitionId": "vehicle-eligibility-check" },
-          "elementSelectors": [{ "elementId": "Event_1n2m3k4" }],
+          "elementSelectors": [{ "elementId": "Event_Ineligible" }],
           "state": "IS_COMPLETED"
         }
       ]
