@@ -18,7 +18,7 @@
         </zeebe:ioMapping>
         <zeebe:taskHeaders>
           <zeebe:header key="resultVariable" value="response" />
-          <zeebe:header key="resultExpression" value="={&#10;    vehicleInfo: {&#10;        make: response.body.Results[Variable=&#34;Make&#34;][1].Value,&#10;        model: response.body.Results[Variable=&#34;Model&#34;][1].Value,&#10;        year: number(response.body.Resuts[Variable=&#34;Model Year&#34;][1].Value),&#10;        vehicleType: response.body.Results[Variable=&#34;Vehicle Type&#34;][1].Value&#10;    }&#10;}" />
+          <zeebe:header key="resultExpression" value="={&#10;    vehicleInfo: {&#10;        make: response.body.Results[Variable=&#34;Make&#34;][1].Value,&#10;        model: response.body.Results[Variable=&#34;Model&#34;][1].Value,&#10;        year: number(response.body.Results[Variable=&#34;Model Year&#34;][1].Value),&#10;        vehicleType: response.body.Results[Variable=&#34;Vehicle Type&#34;][1].Value&#10;    }&#10;}" />
         </zeebe:taskHeaders>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0y1k0x5</bpmn:incoming>
@@ -51,10 +51,17 @@
       <bpmn:incoming>Flow_0z5x4y3</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_0z5x4y3" sourceRef="Activity_0a1b2c3" targetRef="Event_1n2m3k4" />
-    <bpmn:task id="Activity_1c9x4z0" name="Determine Eligibility">
+    <bpmn:businessRuleTask id="Activity_1c9x4z0" name="Determine Eligibility">
+      <bpmn:extensionElements>
+        <zeebe:calledDecision decisionId="vehicleEligibility" resultVariable="eligibilityResult" />
+        <zeebe:ioMapping>
+          <zeebe:output source="=eligibilityResult.riskScore" target="riskScore" />
+          <zeebe:output source="=eligibilityResult.isEligible" target="isEligible" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_1u8y7z6</bpmn:incoming>
       <bpmn:outgoing>Flow_0i8g9v4</bpmn:outgoing>
-    </bpmn:task>
+    </bpmn:businessRuleTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_vehicle-eligibility-check">
     <bpmndi:BPMNPlane id="BPMNPlane_vehicle-eligibility-check" bpmnElement="vehicle-eligibility-check">
