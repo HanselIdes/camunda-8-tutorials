@@ -11,14 +11,6 @@ This process checks whether a customer's vehicle qualifies for our seasonal main
 
 The promotion offers a discounted maintenance package to qualifying customers. We defined eligibility based on vehicle age and type, because older commercial vehicles carry too much maintenance risk for the promotion economics to work.
 
-## Stakeholders
-
-| Role           | Name        | Responsibility                                     |
-|----------------|-------------|----------------------------------------------------|
-| Process owner  | Leila Ramos | Eligibility rules, outcomes, process requirements  |
-| Marketing      | TBD         | Promotion terms, customer communication            |
-| Engineering    | TBD         | System integration, connector configuration        |
-
 ## Process flow
 
 1. Customer submits a VIN at process start.
