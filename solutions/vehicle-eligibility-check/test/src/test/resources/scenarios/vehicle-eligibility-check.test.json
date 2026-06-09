@@ -9,12 +9,10 @@
           "type": "MOCK_JOB_WORKER_COMPLETE_JOB",
           "jobType": "io.camunda:http-json:1",
           "variables": {
-            "vehicleInfo": {
-              "make": "HONDA",
-              "model": "CIVIC",
-              "year": 2023,
-              "vehicleType": "PASSENGER CAR"
-            }
+            "make": "HONDA",
+            "model": "CIVIC",
+            "year": 2023,
+            "vehicleType": "PASSENGER CAR"
           }
         },
         {
@@ -48,12 +46,10 @@
           "type": "MOCK_JOB_WORKER_COMPLETE_JOB",
           "jobType": "io.camunda:http-json:1",
           "variables": {
-            "vehicleInfo": {
-              "make": "FORD",
-              "model": "F-150",
-              "year": 2015,
-              "vehicleType": "TRUCK"
-            }
+            "make": "FORD",
+            "model": "F-150",
+            "year": 2015,
+            "vehicleType": "TRUCK"
           }
         },
         {
