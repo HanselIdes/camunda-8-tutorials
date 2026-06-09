@@ -32,29 +32,44 @@
       <bpmn:outgoing>Flow_Ineligible</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_Eligible" name="Yes" sourceRef="Gateway_Eligible" targetRef="Task_NotifyEligible">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=isEligible</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=eligible</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_Ineligible" name="No" sourceRef="Gateway_Eligible" targetRef="Task_NotifyIneligible" />
-    <bpmn:task id="Task_NotifyEligible" name="Notify Customer of Eligibility">
+    <bpmn:serviceTask id="Task_NotifyEligible" name="Notify Customer of Eligibility">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="notify-eligible" />
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_Eligible</bpmn:incoming>
       <bpmn:outgoing>Flow_4</bpmn:outgoing>
-    </bpmn:task>
+    </bpmn:serviceTask>
     <bpmn:sequenceFlow id="Flow_4" sourceRef="Task_NotifyEligible" targetRef="EndEvent_Eligible" />
     <bpmn:endEvent id="EndEvent_Eligible" name="Promo Applied">
       <bpmn:incoming>Flow_4</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:task id="Task_NotifyIneligible" name="Notify Customer of Ineligibility">
+    <bpmn:serviceTask id="Task_NotifyIneligible" name="Notify Customer of Ineligibility">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="notify-ineligible" />
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_Ineligible</bpmn:incoming>
       <bpmn:outgoing>Flow_5</bpmn:outgoing>
-    </bpmn:task>
+    </bpmn:serviceTask>
     <bpmn:sequenceFlow id="Flow_5" sourceRef="Task_NotifyIneligible" targetRef="EndEvent_Ineligible" />
     <bpmn:endEvent id="EndEvent_Ineligible" name="Process Ended">
       <bpmn:incoming>Flow_5</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:task id="Task_CheckEligibility" name="Check Vehicle Eligibility">
+    <bpmn:businessRuleTask id="Task_CheckEligibility" name="Check Vehicle Eligibility">
+      <bpmn:extensionElements>
+        <zeebe:calledDecision decisionId="vehicleEligibility" resultVariable="eligibilityResult" />
+        <zeebe:ioMapping>
+          <zeebe:input source="=vehicleInfo.year" target="year" />
+          <zeebe:input source="=vehicleInfo.vehicleType" target="vehicleType" />
+          <zeebe:output source="=eligibilityResult.riskScore" target="riskScore" />
+          <zeebe:output source="=eligibilityResult.eligible" target="eligible" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_2</bpmn:incoming>
       <bpmn:outgoing>Flow_3</bpmn:outgoing>
-    </bpmn:task>
+    </bpmn:businessRuleTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_vehicle-eligibility-check">
     <bpmndi:BPMNPlane id="BPMNPlane_vehicle-eligibility-check" bpmnElement="vehicle-eligibility-check">
