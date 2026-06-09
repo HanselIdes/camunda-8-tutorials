@@ -3,7 +3,7 @@
   "testCases": [
     {
       "name": "Eligible vehicle — routes to eligible end event",
-      "description": "2023 Honda Civic (PASSENGER CAR) — 2022+, passenger type; DMN rule 1 evaluates to eligible=true, riskScore=5",
+      "description": "2023 Honda Civic (PASSENGER CAR) — 2022+, passenger type; DMN rule 1 fires: eligible=true, riskScore=5.",
       "instructions": [
         {
           "type": "MOCK_JOB_WORKER_COMPLETE_JOB",
@@ -12,7 +12,7 @@
             "year": 2023,
             "make": "HONDA",
             "model": "CIVIC",
-            "vehicletype": "PASSENGER CAR"
+            "vehicleType": "PASSENGER CAR"
           }
         },
         {
@@ -23,14 +23,14 @@
         {
           "type": "ASSERT_ELEMENT_INSTANCES",
           "processInstanceSelector": { "processDefinitionId": "vehicle-eligibility-check" },
-          "elementSelectors": [{ "elementId": "EndEvent_Eligible" }],
+          "elementSelectors": [{ "elementId": "Event_1s1y5f3" }],
           "state": "IS_COMPLETED"
         }
       ]
     },
     {
       "name": "Ineligible vehicle — routes to ineligible end event",
-      "description": "2015 Ford F-150 (TRUCK) — pre-2018, non-passenger type; DMN rule 6 evaluates to eligible=false, riskScore=50",
+      "description": "2015 Ford F-150 (TRUCK) — pre-2018, non-passenger type; DMN rule 6 fires: eligible=false, riskScore=50.",
       "instructions": [
         {
           "type": "MOCK_JOB_WORKER_COMPLETE_JOB",
@@ -39,7 +39,7 @@
             "year": 2015,
             "make": "FORD",
             "model": "F-150",
-            "vehicletype": "TRUCK"
+            "vehicleType": "TRUCK"
           }
         },
         {
@@ -50,7 +50,7 @@
         {
           "type": "ASSERT_ELEMENT_INSTANCES",
           "processInstanceSelector": { "processDefinitionId": "vehicle-eligibility-check" },
-          "elementSelectors": [{ "elementId": "EndEvent_Ineligible" }],
+          "elementSelectors": [{ "elementId": "Event_0f8w3r2" }],
           "state": "IS_COMPLETED"
         }
       ]
