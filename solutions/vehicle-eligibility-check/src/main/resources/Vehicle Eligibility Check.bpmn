@@ -42,6 +42,13 @@
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_18y78xj" name="No" sourceRef="Gateway_0u4y7i8" targetRef="Event_0f8w3r2" />
     <bpmn:businessRuleTask id="Activity_1c6x31w" name="Determine Eligibility">
+      <bpmn:extensionElements>
+        <zeebe:calledDecision decisionId="vehicleEligibility" resultVariable="eligibilityResult" />
+        <zeebe:ioMapping>
+          <zeebe:output source="=eligibilityResult.eligible" target="eligible" />
+          <zeebe:output source="=eligibilityResult.riskScore" target="riskScore" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_1v29329</bpmn:incoming>
       <bpmn:outgoing>Flow_1o09w3s</bpmn:outgoing>
     </bpmn:businessRuleTask>
