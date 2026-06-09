@@ -2,17 +2,19 @@
   "$schema": "https://camunda.com/json-schema/cpt-test-cases/8.9/schema.json",
   "testCases": [
     {
-      "name": "Eligible vehicle — routes to eligible end event",
-      "description": "2023 Honda Civic (PASSENGER CAR) — 2022+, passenger type; DMN rule 1 evaluates to eligible=true, riskScore=5",
+      "name": "Eligible vehicle — promo applied",
+      "description": "2023 Honda Civic (PASSENGER CAR): DMN rule 1 fires (2022+, passenger type), eligible=true; process routes to Promo Applied end event.",
       "instructions": [
         {
           "type": "MOCK_JOB_WORKER_COMPLETE_JOB",
           "jobType": "io.camunda:http-json:1",
           "variables": {
-            "year": 2023,
-            "make": "HONDA",
-            "model": "CIVIC",
-            "vehicletype": "PASSENGER CAR"
+            "vehicleInfo": {
+              "make": "HONDA",
+              "model": "CIVIC",
+              "year": 2023,
+              "vehicleType": "PASSENGER CAR"
+            }
           }
         },
         {
@@ -21,25 +23,37 @@
           "variables": { "vin": "2HGFE2F57NH123456" }
         },
         {
+          "type": "COMPLETE_JOB",
+          "jobSelector": { "elementId": "Task_NotifyEligible" },
+          "variables": {}
+        },
+        {
           "type": "ASSERT_ELEMENT_INSTANCES",
           "processInstanceSelector": { "processDefinitionId": "vehicle-eligibility-check" },
           "elementSelectors": [{ "elementId": "EndEvent_Eligible" }],
+          "state": "IS_COMPLETED"
+        },
+        {
+          "type": "ASSERT_PROCESS_INSTANCE",
+          "processInstanceSelector": { "processDefinitionId": "vehicle-eligibility-check" },
           "state": "IS_COMPLETED"
         }
       ]
     },
     {
-      "name": "Ineligible vehicle — routes to ineligible end event",
-      "description": "2015 Ford F-150 (TRUCK) — pre-2018, non-passenger type; DMN rule 6 evaluates to eligible=false, riskScore=50",
+      "name": "Ineligible vehicle — process ended",
+      "description": "2015 Ford F-150 (TRUCK): DMN rule 6 fires (pre-2018, non-passenger type), eligible=false; process routes to Process Ended end event.",
       "instructions": [
         {
           "type": "MOCK_JOB_WORKER_COMPLETE_JOB",
           "jobType": "io.camunda:http-json:1",
           "variables": {
-            "year": 2015,
-            "make": "FORD",
-            "model": "F-150",
-            "vehicletype": "TRUCK"
+            "vehicleInfo": {
+              "make": "FORD",
+              "model": "F-150",
+              "year": 2015,
+              "vehicleType": "TRUCK"
+            }
           }
         },
         {
@@ -48,9 +62,19 @@
           "variables": { "vin": "1FTFW1ET5EKE01234" }
         },
         {
+          "type": "COMPLETE_JOB",
+          "jobSelector": { "elementId": "Task_NotifyIneligible" },
+          "variables": {}
+        },
+        {
           "type": "ASSERT_ELEMENT_INSTANCES",
           "processInstanceSelector": { "processDefinitionId": "vehicle-eligibility-check" },
           "elementSelectors": [{ "elementId": "EndEvent_Ineligible" }],
+          "state": "IS_COMPLETED"
+        },
+        {
+          "type": "ASSERT_PROCESS_INSTANCE",
+          "processInstanceSelector": { "processDefinitionId": "vehicle-eligibility-check" },
           "state": "IS_COMPLETED"
         }
       ]
