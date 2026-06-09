@@ -3,16 +3,18 @@
   "testCases": [
     {
       "name": "Eligible vehicle — routes to eligible end event",
-      "description": "2023 Honda Civic (PASSENGER CAR) — 2022+, passenger type; DMN rule 1 evaluates to eligible=true, riskScore=5",
+      "description": "2023 PASSENGER CAR — 2022+, personal type; DMN rule 1 fires (riskScore=5, eligible=true), gateway routes to promo-sent end event.",
       "instructions": [
         {
           "type": "MOCK_JOB_WORKER_COMPLETE_JOB",
           "jobType": "io.camunda:http-json:1",
           "variables": {
-            "year": 2023,
-            "make": "HONDA",
-            "model": "CIVIC",
-            "vehicletype": "PASSENGER CAR"
+            "vehicleInfo": {
+              "year": 2023,
+              "make": "HONDA",
+              "model": "CIVIC",
+              "vehicleType": "PASSENGER CAR"
+            }
           }
         },
         {
@@ -25,21 +27,28 @@
           "processInstanceSelector": { "processDefinitionId": "vehicle-eligibility-check" },
           "elementSelectors": [{ "elementId": "EndEvent_Eligible" }],
           "state": "IS_COMPLETED"
+        },
+        {
+          "type": "ASSERT_PROCESS_INSTANCE",
+          "processInstanceSelector": { "processDefinitionId": "vehicle-eligibility-check" },
+          "state": "IS_COMPLETED"
         }
       ]
     },
     {
       "name": "Ineligible vehicle — routes to ineligible end event",
-      "description": "2015 Ford F-150 (TRUCK) — pre-2018, non-passenger type; DMN rule 6 evaluates to eligible=false, riskScore=50",
+      "description": "2015 TRUCK — pre-2018, non-personal type; DMN rule 6 fires (riskScore=50, eligible=false), gateway takes default flow to rejection-sent end event.",
       "instructions": [
         {
           "type": "MOCK_JOB_WORKER_COMPLETE_JOB",
           "jobType": "io.camunda:http-json:1",
           "variables": {
-            "year": 2015,
-            "make": "FORD",
-            "model": "F-150",
-            "vehicletype": "TRUCK"
+            "vehicleInfo": {
+              "year": 2015,
+              "make": "FORD",
+              "model": "F-150",
+              "vehicleType": "TRUCK"
+            }
           }
         },
         {
@@ -51,6 +60,11 @@
           "type": "ASSERT_ELEMENT_INSTANCES",
           "processInstanceSelector": { "processDefinitionId": "vehicle-eligibility-check" },
           "elementSelectors": [{ "elementId": "EndEvent_Ineligible" }],
+          "state": "IS_COMPLETED"
+        },
+        {
+          "type": "ASSERT_PROCESS_INSTANCE",
+          "processInstanceSelector": { "processDefinitionId": "vehicle-eligibility-check" },
           "state": "IS_COMPLETED"
         }
       ]
