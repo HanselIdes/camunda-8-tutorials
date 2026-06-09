@@ -21,11 +21,6 @@
           "variables": { "vin": "2HGFE2F57NH123456" }
         },
         {
-          "type": "COMPLETE_JOB",
-          "jobSelector": { "elementId": "Task_NotifyEligible" },
-          "variables": {}
-        },
-        {
           "type": "ASSERT_ELEMENT_INSTANCES",
           "processInstanceSelector": { "processDefinitionId": "vehicle-eligibility-check" },
           "elementSelectors": [{ "elementId": "EndEvent_Eligible" }],
@@ -56,11 +51,6 @@
           "type": "CREATE_PROCESS_INSTANCE",
           "processDefinitionSelector": { "processDefinitionId": "vehicle-eligibility-check" },
           "variables": { "vin": "1FTFW1ET5EKE01234" }
-        },
-        {
-          "type": "COMPLETE_JOB",
-          "jobSelector": { "elementId": "Task_NotifyIneligible" },
-          "variables": {}
         },
         {
           "type": "ASSERT_ELEMENT_INSTANCES",
