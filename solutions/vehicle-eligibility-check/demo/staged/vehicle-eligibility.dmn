@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
-             id="VehicleEligibilityDecisions"
-             name="Vehicle Eligibility Decisions"
+             xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"
+             xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
+             id="vehicleEligibilityDrd"
+             name="Vehicle Eligibility"
              namespace="http://camunda.org/schema/1.0/dmn">
   <decision id="vehicleEligibility" name="Vehicle Eligibility">
     <decisionTable id="decisionTable_vehicleEligibility" hitPolicy="FIRST">
@@ -12,50 +14,50 @@
       </input>
       <input id="input_vehicleType" label="Vehicle Type">
         <inputExpression id="inputExpression_vehicleType" typeRef="string">
-          <text>vehicletype</text>
+          <text>vehicleType</text>
         </inputExpression>
       </input>
-      <output id="output_vehicleScore" label="Vehicle Score" name="vehicleScore" typeRef="integer" />
-      <output id="output_vehicleEligible" label="Vehicle Eligible" name="vehicleEligible" typeRef="boolean" />
+      <output id="output_riskScore" label="Risk Score" name="riskScore" typeRef="integer"/>
+      <output id="output_eligible" label="Eligible" name="eligible" typeRef="boolean"/>
+      <!-- Row 1: 2022 or newer, passenger car / motorcycle / MPV -->
       <rule id="rule_1">
-        <description>2022+ passenger car, motorcycle, or MPV</description>
         <inputEntry id="inputEntry_1_1"><text>&gt;= 2022</text></inputEntry>
-        <inputEntry id="inputEntry_1_2"><text>"PASSENGER CAR", "MOTORCYCLE", "MULTIPURPOSE PASSENGER VEHICLE (MPV)"</text></inputEntry>
+        <inputEntry id="inputEntry_1_2"><text>"PASSENGER CAR","MOTORCYCLE","MULTIPURPOSE PASSENGER VEHICLE (MPV)"</text></inputEntry>
         <outputEntry id="outputEntry_1_1"><text>5</text></outputEntry>
         <outputEntry id="outputEntry_1_2"><text>true</text></outputEntry>
       </rule>
+      <!-- Row 2: 2022 or newer, any other type -->
       <rule id="rule_2">
-        <description>2022+ any other type</description>
         <inputEntry id="inputEntry_2_1"><text>&gt;= 2022</text></inputEntry>
-        <inputEntry id="inputEntry_2_2"><text>-</text></inputEntry>
+        <inputEntry id="inputEntry_2_2"><text></text></inputEntry>
         <outputEntry id="outputEntry_2_1"><text>30</text></outputEntry>
         <outputEntry id="outputEntry_2_2"><text>true</text></outputEntry>
       </rule>
+      <!-- Row 3: 2018-2021, passenger car / motorcycle / MPV -->
       <rule id="rule_3">
-        <description>2018-2021 passenger car, motorcycle, or MPV</description>
         <inputEntry id="inputEntry_3_1"><text>[2018..2021]</text></inputEntry>
-        <inputEntry id="inputEntry_3_2"><text>"PASSENGER CAR", "MOTORCYCLE", "MULTIPURPOSE PASSENGER VEHICLE (MPV)"</text></inputEntry>
+        <inputEntry id="inputEntry_3_2"><text>"PASSENGER CAR","MOTORCYCLE","MULTIPURPOSE PASSENGER VEHICLE (MPV)"</text></inputEntry>
         <outputEntry id="outputEntry_3_1"><text>15</text></outputEntry>
         <outputEntry id="outputEntry_3_2"><text>true</text></outputEntry>
       </rule>
+      <!-- Row 4: 2018-2021, any other type -->
       <rule id="rule_4">
-        <description>2018-2021 any other type</description>
         <inputEntry id="inputEntry_4_1"><text>[2018..2021]</text></inputEntry>
-        <inputEntry id="inputEntry_4_2"><text>-</text></inputEntry>
+        <inputEntry id="inputEntry_4_2"><text></text></inputEntry>
         <outputEntry id="outputEntry_4_1"><text>40</text></outputEntry>
         <outputEntry id="outputEntry_4_2"><text>true</text></outputEntry>
       </rule>
+      <!-- Row 5: before 2018, passenger car / motorcycle / MPV -->
       <rule id="rule_5">
-        <description>Pre-2018 passenger car, motorcycle, or MPV</description>
         <inputEntry id="inputEntry_5_1"><text>&lt; 2018</text></inputEntry>
-        <inputEntry id="inputEntry_5_2"><text>"PASSENGER CAR", "MOTORCYCLE", "MULTIPURPOSE PASSENGER VEHICLE (MPV)"</text></inputEntry>
+        <inputEntry id="inputEntry_5_2"><text>"PASSENGER CAR","MOTORCYCLE","MULTIPURPOSE PASSENGER VEHICLE (MPV)"</text></inputEntry>
         <outputEntry id="outputEntry_5_1"><text>25</text></outputEntry>
         <outputEntry id="outputEntry_5_2"><text>true</text></outputEntry>
       </rule>
+      <!-- Row 6: before 2018, any other type — ineligible -->
       <rule id="rule_6">
-        <description>Pre-2018 any other type -- ineligible</description>
         <inputEntry id="inputEntry_6_1"><text>&lt; 2018</text></inputEntry>
-        <inputEntry id="inputEntry_6_2"><text>-</text></inputEntry>
+        <inputEntry id="inputEntry_6_2"><text></text></inputEntry>
         <outputEntry id="outputEntry_6_1"><text>50</text></outputEntry>
         <outputEntry id="outputEntry_6_2"><text>false</text></outputEntry>
       </rule>
