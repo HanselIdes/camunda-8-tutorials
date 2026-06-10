@@ -17,7 +17,7 @@
         </zeebe:ioMapping>
         <zeebe:taskHeaders>
           <zeebe:header key="resultVariable" value="response" />
-          <zeebe:header key="resultExpression" />
+          <zeebe:header key="resultExpression" value="={&#10;   &#34;make&#34;: response.body.Results[Variable=&#34;Make&#34;][1].Value,&#10;   &#34;model&#34;: response.body.Results[Variable=&#34;Model&#34;][1].Value,&#10;   &#34;year&#34;: number(response.body.Results[Variable=&#34;Model Year&#34;][1].Value),&#10;   &#34;vehicleType&#34;: response.body.Results[Variable=&#34;Vehicle Type&#34;][1].Value&#10;}" />
           <zeebe:header key="errorExpression" />
         </zeebe:taskHeaders>
       </bpmn:extensionElements>
@@ -27,10 +27,10 @@
     <bpmn:sequenceFlow id="Flow_0t29wf7" sourceRef="StartEvent_1" targetRef="Activity_1salovb" />
     <bpmn:businessRuleTask id="Activity_0z7z3r8" name="Determine Eligibility">
       <bpmn:extensionElements>
-        <zeebe:calledDecision decisionId="vehicleEligibility" resultVariable="eligibilityResult"/>
+        <zeebe:calledDecision decisionId="vehicleEligibility" resultVariable="eligibilityResult" />
         <zeebe:ioMapping>
-          <zeebe:output source="=eligibilityResult.riskScore" target="riskScore"/>
-          <zeebe:output source="=eligibilityResult.eligible" target="eligible"/>
+          <zeebe:output source="=eligibilityResult.riskScore" target="riskScore" />
+          <zeebe:output source="=eligibilityResult.eligible" target="eligible" />
         </zeebe:ioMapping>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_01lq4jh</bpmn:incoming>
