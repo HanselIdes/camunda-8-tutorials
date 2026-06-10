@@ -25,24 +25,31 @@
       <bpmn:outgoing>Flow_01lq4jh</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="Flow_0t29wf7" sourceRef="StartEvent_1" targetRef="Activity_1salovb" />
-    <bpmn:task id="Activity_0z7z3r8" name="Eligibility">
+    <bpmn:businessRuleTask id="Activity_0z7z3r8" name="Determine Eligibility">
+      <bpmn:extensionElements>
+        <zeebe:calledDecision decisionId="vehicleEligibility" resultVariable="eligibilityResult"/>
+        <zeebe:ioMapping>
+          <zeebe:output source="=eligibilityResult.riskScore" target="riskScore"/>
+          <zeebe:output source="=eligibilityResult.eligible" target="eligible"/>
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_01lq4jh</bpmn:incoming>
       <bpmn:outgoing>Flow_1d5m7dp</bpmn:outgoing>
-    </bpmn:task>
+    </bpmn:businessRuleTask>
     <bpmn:sequenceFlow id="Flow_01lq4jh" sourceRef="Activity_1salovb" targetRef="Activity_0z7z3r8" />
-    <bpmn:exclusiveGateway id="Gateway_1rhxztv" default="Flow_1xpmqsr">
+    <bpmn:exclusiveGateway id="Gateway_1rhxztv" name="Vehicle eligible?" default="Flow_1xpmqsr">
       <bpmn:incoming>Flow_1d5m7dp</bpmn:incoming>
       <bpmn:outgoing>Flow_1q43c28</bpmn:outgoing>
       <bpmn:outgoing>Flow_1xpmqsr</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_1d5m7dp" sourceRef="Activity_0z7z3r8" targetRef="Gateway_1rhxztv" />
-    <bpmn:endEvent id="Event_0wlhby0">
+    <bpmn:endEvent id="Event_0wlhby0" name="Vehicle eligible">
       <bpmn:incoming>Flow_1q43c28</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_1q43c28" sourceRef="Gateway_1rhxztv" targetRef="Event_0wlhby0">
+    <bpmn:sequenceFlow id="Flow_1q43c28" name="eligible" sourceRef="Gateway_1rhxztv" targetRef="Event_0wlhby0">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=eligible = true</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:endEvent id="Event_1ga1lf9">
+    <bpmn:endEvent id="Event_1ga1lf9" name="Vehicle ineligible">
       <bpmn:incoming>Flow_1xpmqsr</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1xpmqsr" sourceRef="Gateway_1rhxztv" targetRef="Event_1ga1lf9" />
