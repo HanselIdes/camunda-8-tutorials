@@ -109,7 +109,7 @@ fi
 
 # Update local branch to match
 git checkout main
-git pull origin main
+git reset --hard origin/main
 git branch -D web-modeler 2>/dev/null || true
 git checkout -b web-modeler origin/web-modeler
 git checkout main
