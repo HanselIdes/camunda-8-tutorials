@@ -51,10 +51,17 @@
     <bpmn:endEvent id="Event_IneligibleEnd" name="Process Complete (Ineligible)">
       <bpmn:incoming>Flow_4d3c2b1</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:task id="Activity_DetermineEligibility" name="Determine Eligibility">
+    <bpmn:businessRuleTask id="Activity_DetermineEligibility" name="Determine Eligibility">
+      <bpmn:extensionElements>
+        <zeebe:calledDecision decisionId="vehicleEligibility" resultVariable="eligibilityResult"/>
+        <zeebe:ioMapping>
+          <zeebe:output source="=eligibilityResult.eligible" target="isEligible"/>
+          <zeebe:output source="=eligibilityResult.riskScore" target="riskScore"/>
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_1v2w3x4</bpmn:incoming>
       <bpmn:outgoing>Flow_0z5y6a7</bpmn:outgoing>
-    </bpmn:task>
+    </bpmn:businessRuleTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_vehicle-eligibility-check">
     <bpmndi:BPMNPlane id="BPMNPlane_vehicle-eligibility-check" bpmnElement="vehicle-eligibility-check">

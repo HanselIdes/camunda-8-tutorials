@@ -2,12 +2,17 @@
   "$schema": "https://camunda.com/json-schema/cpt-test-cases/8.9/schema.json",
   "testCases": [
     {
-      "name": "Eligible vehicle — routes to Promo Applied end event",
-      "description": "2023 PASSENGER CAR: DMN rule 1, eligible=true, riskScore=5. Covers eligible path: StartEvent_1 → Activity_0k5z3x2 → Activity_1c6x9f4 → Gateway_1m4n5p6 → Activity_0f7g8h9 → Event_1q2w3e4.",
+      "name": "Eligible vehicle — reaches Process Complete (Eligible)",
+      "description": "2023 PASSENGER CAR: DMN rule 1 fires (riskScore=5, eligible=true), gateway routes to eligible path.",
       "instructions": [
         {
-          "type": "MOCK_JOB_WORKER_COMPLETE_JOB",
-          "jobType": "io.camunda:http-json:1",
+          "type": "CREATE_PROCESS_INSTANCE",
+          "processDefinitionSelector": { "processDefinitionId": "vehicle-eligibility-check" },
+          "variables": { "vin": "2HGFE2F57NH123456" }
+        },
+        {
+          "type": "COMPLETE_JOB",
+          "jobSelector": { "elementId": "Activity_VinLookup" },
           "variables": {
             "year": 2023,
             "make": "HONDA",
@@ -16,25 +21,25 @@
           }
         },
         {
-          "type": "CREATE_PROCESS_INSTANCE",
-          "processDefinitionSelector": { "processDefinitionId": "vehicle-eligibility-check" },
-          "variables": { "vin": "2HGFE2F57NH123456" }
-        },
-        {
           "type": "ASSERT_ELEMENT_INSTANCES",
           "processInstanceSelector": { "processDefinitionId": "vehicle-eligibility-check" },
-          "elementSelectors": [{ "elementId": "Event_1q2w3e4" }],
+          "elementSelectors": [{ "elementId": "Event_EligibleEnd" }],
           "state": "IS_COMPLETED"
         }
       ]
     },
     {
-      "name": "Ineligible vehicle — routes to Process Ended end event",
-      "description": "2015 TRUCK: DMN rule 6, eligible=false, riskScore=50. Covers ineligible path: Gateway_1m4n5p6 → Activity_1r2s3t4 → Event_0u6y5t4.",
+      "name": "Ineligible vehicle — reaches Process Complete (Ineligible)",
+      "description": "2015 TRUCK: DMN rule 6 fires (riskScore=50, eligible=false), gateway routes to ineligible path.",
       "instructions": [
         {
-          "type": "MOCK_JOB_WORKER_COMPLETE_JOB",
-          "jobType": "io.camunda:http-json:1",
+          "type": "CREATE_PROCESS_INSTANCE",
+          "processDefinitionSelector": { "processDefinitionId": "vehicle-eligibility-check" },
+          "variables": { "vin": "1FTFW1ET5EKE01234" }
+        },
+        {
+          "type": "COMPLETE_JOB",
+          "jobSelector": { "elementId": "Activity_VinLookup" },
           "variables": {
             "year": 2015,
             "make": "FORD",
@@ -43,14 +48,9 @@
           }
         },
         {
-          "type": "CREATE_PROCESS_INSTANCE",
-          "processDefinitionSelector": { "processDefinitionId": "vehicle-eligibility-check" },
-          "variables": { "vin": "1FTFW1ET5EKE01234" }
-        },
-        {
           "type": "ASSERT_ELEMENT_INSTANCES",
           "processInstanceSelector": { "processDefinitionId": "vehicle-eligibility-check" },
-          "elementSelectors": [{ "elementId": "Event_0u6y5t4" }],
+          "elementSelectors": [{ "elementId": "Event_IneligibleEnd" }],
           "state": "IS_COMPLETED"
         }
       ]
