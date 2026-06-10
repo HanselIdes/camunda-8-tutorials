@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="vehicle-eligibility-drd" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.7.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+  <decision id="vehicleEligibility" name="Vehicle Eligibility">
+    <decisionTable id="DecisionTable_vehicleEligibility" hitPolicy="FIRST">
+      <input id="Input_year" label="Vehicle year">
+        <inputExpression id="InputExpression_year" typeRef="integer">
+          <text>year</text>
+        </inputExpression>
+      </input>
+      <input id="Input_vehicleType" label="Vehicle type">
+        <inputExpression id="InputExpression_vehicleType" typeRef="string">
+          <text>vehicleType</text>
+        </inputExpression>
+      </input>
+      <output id="Output_riskScore" label="Risk score" name="riskScore" typeRef="integer" />
+      <output id="Output_eligible" label="Eligible" name="eligible" typeRef="boolean" />
+      <rule id="rule_1">
+        <inputEntry id="InputEntry_1_year">
+          <text>&gt;= 2022</text>
+        </inputEntry>
+        <inputEntry id="InputEntry_1_type">
+          <text>"PASSENGER CAR","MOTORCYCLE","MULTIPURPOSE PASSENGER VEHICLE (MPV)"</text>
+        </inputEntry>
+        <outputEntry id="OutputEntry_1_risk">
+          <text>5</text>
+        </outputEntry>
+        <outputEntry id="OutputEntry_1_eligible">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="rule_2">
+        <inputEntry id="InputEntry_2_year">
+          <text>&gt;= 2022</text>
+        </inputEntry>
+        <inputEntry id="InputEntry_2_type">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="OutputEntry_2_risk">
+          <text>30</text>
+        </outputEntry>
+        <outputEntry id="OutputEntry_2_eligible">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="rule_3">
+        <inputEntry id="InputEntry_3_year">
+          <text>[2018..2021]</text>
+        </inputEntry>
+        <inputEntry id="InputEntry_3_type">
+          <text>"PASSENGER CAR","MOTORCYCLE","MULTIPURPOSE PASSENGER VEHICLE (MPV)"</text>
+        </inputEntry>
+        <outputEntry id="OutputEntry_3_risk">
+          <text>15</text>
+        </outputEntry>
+        <outputEntry id="OutputEntry_3_eligible">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="rule_4">
+        <inputEntry id="InputEntry_4_year">
+          <text>[2018..2021]</text>
+        </inputEntry>
+        <inputEntry id="InputEntry_4_type">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="OutputEntry_4_risk">
+          <text>40</text>
+        </outputEntry>
+        <outputEntry id="OutputEntry_4_eligible">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="rule_5">
+        <inputEntry id="InputEntry_5_year">
+          <text>&lt; 2018</text>
+        </inputEntry>
+        <inputEntry id="InputEntry_5_type">
+          <text>"PASSENGER CAR","MOTORCYCLE","MULTIPURPOSE PASSENGER VEHICLE (MPV)"</text>
+        </inputEntry>
+        <outputEntry id="OutputEntry_5_risk">
+          <text>25</text>
+        </outputEntry>
+        <outputEntry id="OutputEntry_5_eligible">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="rule_6">
+        <inputEntry id="InputEntry_6_year">
+          <text>&lt; 2018</text>
+        </inputEntry>
+        <inputEntry id="InputEntry_6_type">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="OutputEntry_6_risk">
+          <text>50</text>
+        </outputEntry>
+        <outputEntry id="OutputEntry_6_eligible">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="vehicleEligibility">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
