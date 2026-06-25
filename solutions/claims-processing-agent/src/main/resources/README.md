@@ -124,6 +124,8 @@ Available to raise process-integration coverage once beeceptor fixtures exist: a
 
 `bash test/report/run-all.sh` runs both layers, stashes each run's surefire + `report.json`, gates coverage, and generates `test/target/unified-report.html` — the three category sections, each requirement with its status, a skipped callout, coverage bands, and bpmn-js diagrams highlighting the covered path (offline, vendored bpmn-js).
 
+A pre-generated copy of the latest run is committed at [`test/report/unified-report.html`](../../test/report/unified-report.html). It is fully self-contained: the BPMN diagrams are embedded inline, so you can download the raw file and open it in any browser without running the suite.
+
 ## Where the tests live
 
 | Artifact | Location |
